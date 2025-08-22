@@ -18,7 +18,7 @@ Map::~Map() {
     UnloadTexture(texture);
 }
 
-void Map::moveMap(const float deltaTime) {
+void Map::scrollMap(const float deltaTime) {
     if (mapPosition.y < 0.0f) {
         mapPosition.y += deltaTime * speed;
     }

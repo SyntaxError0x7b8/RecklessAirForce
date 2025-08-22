@@ -1,22 +1,26 @@
 #include "raylib.h"
-#include "raymath.h"
 
+
+#include "main.h"
 #include "map.h"
+#include "hero.h"
 
 
 
 int main() {
-    constexpr int WINDOWWIDTH = 768;
-    constexpr int WINDOWHEIGHT = 1024;
-    InitWindow(WINDOWWIDTH, WINDOWHEIGHT, "Reckless Air Force");
+
+    InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, TITLE);
 
     // Map
     auto map = Map();
 
+    // create hero
+    auto hero = Hero(map.getScale());
 
 
 
-    SetTargetFPS(60);
+
+    SetTargetFPS(FPS);
     while (!WindowShouldClose()) {
         /*
          * GAME VARIABLES
@@ -29,7 +33,7 @@ int main() {
         /*
          * GAME UPDATE
          */
-        map.moveMap(dT);
+        map.scrollMap(dT);
 
 
 
@@ -41,7 +45,9 @@ int main() {
         ClearBackground(WHITE);
         // draw the map background
         DrawTextureEx(map.getTexture(), map.getMapPosition(), 0.0f, map.getScale(), WHITE);
-        //DrawTextureEx(texture, {}, 0.0f, 1.0f, WHITE);
+
+        // draw the hero
+        hero.drawHero();
 
 
 

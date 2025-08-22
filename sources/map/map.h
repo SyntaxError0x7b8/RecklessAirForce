@@ -21,7 +21,7 @@ public:
 
     [[nodiscard]] float getScale() const { return mapScale; };
 
-    void moveMap(float);
+    void scrollMap(float);
 
 private:
 
