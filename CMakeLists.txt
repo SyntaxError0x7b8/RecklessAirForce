@@ -73,7 +73,8 @@ file(GLOB_RECURSE PROJECT_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_LIST_DIR}/s
 # Define PROJECT_INCLUDE to be the path to the include directory of the project
 set(PROJECT_INCLUDE "${CMAKE_CURRENT_LIST_DIR}/sources/"
         "${CMAKE_CURRENT_LIST_DIR}/sources/hero/"
-        "${CMAKE_CURRENT_LIST_DIR}/sources/enemy/")
+        "${CMAKE_CURRENT_LIST_DIR}/sources/enemy/"
+        "${CMAKE_CURRENT_LIST_DIR}/sources/map/")
 
 
 
@@ -86,7 +87,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_INCLUDE})
 target_link_libraries(${PROJECT_NAME} PRIVATE raylib)
 #target_link_libraries(${PROJECT_NAME} PRIVATE raygui)
 #target_link_libraries(${PROJECT_NAME} PRIVATE LDtkLoader::LDtkLoader)
-target_link_libraries(${PROJECT_NAME} PRIVATE box2d)
+#target_link_libraries(${PROJECT_NAME} PRIVATE box2d)
 #target_link_libraries(${PROJECT_NAME} PRIVATE fmt)
 
 
