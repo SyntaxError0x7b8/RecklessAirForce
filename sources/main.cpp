@@ -6,12 +6,12 @@
 
 
 int main() {
-    constexpr int windowWidth = 640;
-    constexpr int windowHeight = 768;
-    InitWindow(windowWidth, windowHeight, "Reckless Air Force");
+    constexpr int WINDOWWIDTH = 768;
+    constexpr int WINDOWHEIGHT = 1024;
+    InitWindow(WINDOWWIDTH, WINDOWHEIGHT, "Reckless Air Force");
 
     // Map
-    auto map = Map(0.667f, windowWidth, windowHeight);
+    auto map = Map();
 
 
 
@@ -29,6 +29,7 @@ int main() {
         /*
          * GAME UPDATE
          */
+        map.moveMap(dT);
 
 
 

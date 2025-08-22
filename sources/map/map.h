@@ -11,9 +11,7 @@
 class Map {
 public:
 
-    Map(int, int);
-
-    Map(float, int, int);
+    Map();
 
     ~Map();
 
@@ -23,6 +21,8 @@ public:
 
     [[nodiscard]] float getScale() const { return mapScale; };
 
+    void moveMap(float);
+
 private:
 
     const Texture2D texture{LoadTexture("../assets/ground/RAF_Desert.png")};
@@ -30,6 +30,8 @@ private:
     float mapScale {1.0f};
 
     Vector2 mapPosition {};
+
+    const float speed {10.0f}; // pixels per second
 };
 
 
