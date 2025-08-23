@@ -6,21 +6,21 @@
 #include "map.h"
 
 Map::Map() {
-    const int winW = GetScreenWidth();
-    const int winH = GetScreenHeight();
-    mapScale = static_cast<float>(winW) / static_cast<float>(texture.width);
-    const auto mapStartY = (static_cast<float>(texture.height) * mapScale) - static_cast<float>(winH);
-    mapPosition = {0.0f, -mapStartY};
+    const int win_w = GetScreenWidth();
+    const int win_h = GetScreenHeight();
+    map_scale_ = static_cast<float>(win_w) / static_cast<float>(texture_.width);
+    const auto map_start_y = (static_cast<float>(texture_.height) * map_scale_) - static_cast<float>(win_h);
+    map_position_ = {0.0f, -map_start_y};
 }
 
 
 Map::~Map() {
-    UnloadTexture(texture);
+    UnloadTexture(texture_);
 }
 
-void Map::scrollMap(const float deltaTime) {
-    if (mapPosition.y < 0.0f) {
-        mapPosition.y += deltaTime * speed;
+void Map::ScrollMap(const float deltaTime) {
+    if (map_position_.y < 0.0f) {
+        map_position_.y += deltaTime * speed_;
     }
     else {
         return; // send game over message

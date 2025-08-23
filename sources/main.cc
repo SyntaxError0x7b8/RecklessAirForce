@@ -15,7 +15,7 @@ int main() {
     auto map = Map();
 
     // create hero
-    auto hero = Hero(map.getScale());
+    auto hero = Hero(map.GetScale());
 
 
 
@@ -33,7 +33,7 @@ int main() {
         /*
          * GAME UPDATE
          */
-        map.scrollMap(dT);
+        map.ScrollMap(dT);
 
 
 
@@ -44,7 +44,7 @@ int main() {
         BeginDrawing();
         ClearBackground(WHITE);
         // draw the map background
-        DrawTextureEx(map.getTexture(), map.getMapPosition(), 0.0f, map.getScale(), WHITE);
+        DrawTextureEx(map.GetTexture(), map.GetMapPosition(), 0.0f, map.GetScale(), WHITE);
 
         // draw the hero
         hero.drawHero();

@@ -3,8 +3,8 @@
 // Part of RAF game
 //
 
-#ifndef RECKLESSAIRFORCE_MAP_H
-#define RECKLESSAIRFORCE_MAP_H
+#ifndef RECKLESSAIRFORCE_MAP_H_
+#define RECKLESSAIRFORCE_MAP_H_
 
 #include "raylib.h"
 
@@ -15,24 +15,24 @@ public:
 
     ~Map();
 
-    [[nodiscard]] Texture2D getTexture() const { return texture;}
+    [[nodiscard]] Texture2D GetTexture() const { return texture_;}
 
-    [[nodiscard]] Vector2 getMapPosition() const { return mapPosition; };
+    [[nodiscard]] Vector2 GetMapPosition() const { return map_position_; };
 
-    [[nodiscard]] float getScale() const { return mapScale; };
+    [[nodiscard]] float GetScale() const { return map_scale_; };
 
-    void scrollMap(float);
+    void ScrollMap(float);
 
 private:
 
-    const Texture2D texture{LoadTexture("../assets/ground/RAF_Desert.png")};
+    const Texture2D texture_{LoadTexture("../assets/ground/RAF_Desert.png")};
 
-    float mapScale {1.0f};
+    float map_scale_ {1.0f};
 
-    Vector2 mapPosition {};
+    Vector2 map_position_ {};
 
-    const float speed {10.0f}; // pixels per second
+    const float speed_ {10.0f}; // pixels per second
 };
 
 
-#endif //RECKLESSAIRFORCE_MAP_H
+#endif //RECKLESSAIRFORCE_MAP_H_

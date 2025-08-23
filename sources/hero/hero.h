@@ -7,6 +7,7 @@
 
 #include "raylib.h"
 
+
 class Hero {
 public:
 
@@ -18,6 +19,8 @@ public:
 
 
 private:
+
+
 
     const float imagesInTexture = 3.0f;
 
