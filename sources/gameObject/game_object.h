@@ -11,17 +11,19 @@
 
 class GameObject {
 public:
-    GameObject() = default;
+    explicit GameObject(GraphicsComponent *graphics);
 
     ~GameObject() = default;
 
     void Update();
 
     //Factory method:
-    std::unique_ptr<GameObject> CreateHero();
+    GameObject *CreateHero();
 
 private:
-    std::unique_ptr<GraphicsComponent> graphics_;
+    // (abstract) create hero_graphics_component : graphics_component class
+    GraphicsComponent* graphics_;
+
 
 };
 

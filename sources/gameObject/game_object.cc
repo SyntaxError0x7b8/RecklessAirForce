@@ -4,3 +4,8 @@
 //
 
 #include "game_object.h"
+
+GameObject::GameObject(GraphicsComponent *graphics) {
+  graphics_.reset(graphics);
+
+}

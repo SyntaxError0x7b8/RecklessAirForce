@@ -8,7 +8,6 @@
 
 #include "raylib.h"
 
-
 #include "game_object.h"
 
 class GraphicsComponent {
@@ -17,7 +16,11 @@ public:
 
     virtual ~GraphicsComponent();
 
-    virtual void Draw(GameObject &obj) = 0;
+    virtual void Draw() = 0;
+
+    [[nodiscard]] virtual Vector2 GetScreenPosition() const {
+      return screen_position_;
+    };
 
 protected:
   float images_in_texture_{};
