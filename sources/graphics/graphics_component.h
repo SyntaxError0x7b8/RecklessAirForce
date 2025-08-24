@@ -10,26 +10,37 @@
 
 #include "game_object.h"
 
+// interface for any agent graphics (heros or enemies)
 class GraphicsComponent {
 public:
-    GraphicsComponent(const char *sprite, int num_img, float scale);
 
-    virtual ~GraphicsComponent();
+  GraphicsComponent() = default;
 
-    virtual void Draw() = 0;
+  virtual ~GraphicsComponent();
 
-    [[nodiscard]] virtual Vector2 GetScreenPosition() const {
-      return screen_position_;
-    };
+  virtual void Update(GameObject &) = 0;
+
+  virtual void Draw(GameObject &) = 0;
+
+  virtual void SetScale(const float scale) { scale_ = scale; };
+
+  virtual float GetScale() { return scale_; };
 
 protected:
   float images_in_texture_{};
 
-  int frame_{};
+  int frame_{}; // will depend on velocity
+
+  float scale_{1.0f};
 
   Texture texture_{};
 
-  Vector2 screen_position_{};
+  Texture shadow_{};
+
+  Vector2 shadow_offset_{};
+
+  Vector2 shadow_position_{};
+
 
 };
 
