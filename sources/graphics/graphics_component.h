@@ -6,9 +6,10 @@
 #ifndef RECKLESSAIRFORCE_GRAPHICS_COMPONENT_H_
 #define RECKLESSAIRFORCE_GRAPHICS_COMPONENT_H_
 
+//#include "game_object.h" // creates circular dependency
 #include "raylib.h"
 
-#include "game_object.h"
+class GameObject; // to avoid circular dependency. Use only ref or ptr to GameObject
 
 // interface for any agent graphics (heros or enemies)
 class GraphicsComponent {
@@ -16,11 +17,11 @@ public:
 
   GraphicsComponent() = default;
 
-  virtual ~GraphicsComponent();
+  virtual ~GraphicsComponent() = default;
 
-  virtual void Update(GameObject &) = 0;
+  virtual void Update(GameObject&) = 0;
 
-  virtual void Draw(GameObject &) = 0;
+  virtual void Draw(GameObject&) = 0;
 
   virtual void SetScale(const float scale) { scale_ = scale; };
 
