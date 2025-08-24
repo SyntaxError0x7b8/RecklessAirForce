@@ -72,7 +72,6 @@ file(GLOB_RECURSE PROJECT_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_LIST_DIR}/s
 
 # Define PROJECT_INCLUDE to be the path to the include directory of the project
 set(PROJECT_INCLUDE "${CMAKE_CURRENT_LIST_DIR}/sources/"
-        "${CMAKE_CURRENT_LIST_DIR}/sources/hero/"
         "${CMAKE_CURRENT_LIST_DIR}/sources/gameObject/"
         "${CMAKE_CURRENT_LIST_DIR}/sources/map/"
         "${CMAKE_CURRENT_LIST_DIR}/sources/graphics/"
