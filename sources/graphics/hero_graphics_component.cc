@@ -3,6 +3,7 @@
 //
 
 #include "hero_graphics_component.h"
+#include "game_object.h"
 
 #include "raymath.h"
 

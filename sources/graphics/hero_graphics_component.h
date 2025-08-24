@@ -8,16 +8,16 @@
 #include "graphics_component.h"
 
 
-class HeroGraphicsComponent : public GraphicsComponent
+class HeroGraphicsComponent final : public GraphicsComponent
 {
 public:
   explicit HeroGraphicsComponent(float scale);
 
   ~HeroGraphicsComponent() override;
 
-  void Update(GameObject &) override;
+  void Update(GameObject&) override;
 
-  void Draw(GameObject &) override;
+  void Draw(GameObject&) override;
 
   void SetScale(const float scale) override { scale_ = scale; };
 
