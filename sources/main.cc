@@ -2,8 +2,10 @@
 
 
 #include "main.h"
+
+#include "game_object.h"
 #include "map.h"
-#include "hero.h"
+
 
 
 
@@ -15,7 +17,7 @@ int main() {
     auto map = Map();
 
     // create hero
-    auto hero = Hero(map.GetScale());
+    auto hero = GameObject(new HeroGraphicsComponent(map.GetScale()));
 
 
 
@@ -25,7 +27,7 @@ int main() {
         /*
          * GAME VARIABLES
          */
-        const float dT= GetFrameTime(); // frames per second
+        const float kdT= GetFrameTime(); // frames per second
 
 
 
@@ -33,7 +35,8 @@ int main() {
         /*
          * GAME UPDATE
          */
-        map.ScrollMap(dT);
+        map.ScrollMap(kdT);
+        hero.Update(kdT);
 
 
 
@@ -47,7 +50,7 @@ int main() {
         DrawTextureEx(map.GetTexture(), map.GetMapPosition(), 0.0f, map.GetScale(), WHITE);
 
         // draw the hero
-        hero.drawHero();
+        hero.Draw(); // fix shadow as it shows in {0,0} and not scaled down
 
 
 
