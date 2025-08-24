@@ -13,9 +13,11 @@ class GameObject {
 public:
   explicit GameObject(GraphicsComponent *graphics);
 
-  ~GameObject() = default;
+  ~GameObject();
 
-  void Update();
+  void Update(float);
+
+  void Draw();
 
   [[nodiscard]] Vector2 GetScreenPosition() const { return screen_position_; }
 
@@ -35,7 +37,7 @@ private:
   Vector2 velocity_{};
 
     // (abstract) create hero_graphics_component : graphics_component class
-  GraphicsComponent* graphics_;
+  GraphicsComponent* p_graphics_{nullptr};
 
 
 };
