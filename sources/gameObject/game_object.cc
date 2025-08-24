@@ -5,8 +5,7 @@
 
 #include "game_object.h"
 
-GameObject::GameObject(GraphicsComponent *pgraphics) {
-  p_graphics_ = pgraphics;
+GameObject::GameObject(GraphicsComponent *pgraphics) : p_graphics_(pgraphics) {
   const auto kwin_w = static_cast<float>(GetScreenWidth());
   const auto kwin_h = static_cast<float>(GetScreenHeight());
   screen_position_ = {

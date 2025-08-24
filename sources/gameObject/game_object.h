@@ -3,15 +3,16 @@
 // Part of RAF game
 //
 
-#ifndef RECKLESSAIRFORCE_GAME_OBJECT_H
-#define RECKLESSAIRFORCE_GAME_OBJECT_H
+#ifndef RECKLESSAIRFORCE_GAME_OBJECT_H_
+#define RECKLESSAIRFORCE_GAME_OBJECT_H_
 
-#include <memory>
-#include "graphics_component.h"
+
+//#include "graphics_component.h"
+#include "hero_graphics_component.h"
 
 class GameObject {
 public:
-  explicit GameObject(GraphicsComponent *graphics);
+  explicit GameObject(GraphicsComponent *);
 
   ~GameObject();
 
@@ -37,10 +38,10 @@ private:
   Vector2 velocity_{};
 
     // (abstract) create hero_graphics_component : graphics_component class
-  GraphicsComponent* p_graphics_{nullptr};
+  GraphicsComponent *p_graphics_{nullptr};
 
 
 };
 
 
-#endif //RECKLESSAIRFORCE_GAME_OBJECT_H
+#endif //RECKLESSAIRFORCE_GAME_OBJECT_H_
