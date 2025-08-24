@@ -11,18 +11,31 @@
 
 class GameObject {
 public:
-    explicit GameObject(GraphicsComponent *graphics);
+  explicit GameObject(GraphicsComponent *graphics);
 
-    ~GameObject() = default;
+  ~GameObject() = default;
 
-    void Update();
+  void Update();
 
-    //Factory method:
-    GameObject *CreateHero();
+  [[nodiscard]] Vector2 GetScreenPosition() const { return screen_position_; }
+
+  void SetScreenPosition(const Vector2 screen_position) {
+    screen_position_ = screen_position;
+  }
+
+  [[nodiscard]] Vector2 GetVelocity() const { return velocity_; }
+
+  void SetVelocity(const Vector2 velocity) { velocity_ = velocity; }
+
+  //Factory method to be implemented
 
 private:
+  Vector2 screen_position_{};
+
+  Vector2 velocity_{};
+
     // (abstract) create hero_graphics_component : graphics_component class
-    GraphicsComponent* graphics_;
+  GraphicsComponent* graphics_;
 
 
 };
