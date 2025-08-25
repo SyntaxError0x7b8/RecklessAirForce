@@ -12,8 +12,8 @@ HeroGraphicsComponent::HeroGraphicsComponent(const float scale) {
   texture_ = LoadTexture("../assets/heroAircraft/Blue_Plane_Sprite_3x64px.png");
   shadow_ = LoadTexture("../assets/heroAircraft/Shadow_Plane_Sprite_3x64px.png");
   shadow_offset_ = {
-    (texture_.width / images_in_texture_) * scale_,
-    (texture_.height) * scale_
+    static_cast<float>(texture_.width / images_in_texture_) * scale_,
+    static_cast<float>(texture_.height) * scale_
   };
 }
 
@@ -23,7 +23,7 @@ HeroGraphicsComponent::~HeroGraphicsComponent() {
 }
 
 void HeroGraphicsComponent::Update(GameObject& hero) {
-  frame_ = Vector2Length(hero.GetVelocity());
+  frame_ = static_cast<int>(Vector2Length(hero.GetVelocity()));
   shadow_position_ = Vector2Add(hero.GetScreenPosition(), shadow_offset_);
 
 }
