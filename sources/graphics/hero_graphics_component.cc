@@ -24,6 +24,8 @@ HeroGraphicsComponent::~HeroGraphicsComponent() {
 
 void HeroGraphicsComponent::Update(GameObject& hero) {
   frame_ = Vector2Length(hero.GetVelocity());
+  shadow_position_ = Vector2Add(hero.GetScreenPosition(), shadow_offset_);
+
 }
 
 
@@ -49,8 +51,8 @@ void HeroGraphicsComponent::Draw(GameObject& hero) {
   const Rectangle dest_shadow {
     shadow_position_.x,
     shadow_position_.y,
-    (static_cast<float>(shadow_.width) / images_in_texture_) / shadow_reduction_, // will need to change orientation for left movement
-    static_cast<float>(shadow_.height) / shadow_reduction_
+    (static_cast<float>(shadow_.width) / images_in_texture_) * shadow_reduction_, // will need to change orientation for left movement
+    static_cast<float>(shadow_.height) * shadow_reduction_
 };
   DrawTexturePro(shadow_, source_shadow, dest_shadow, {}, scale_, WHITE);
   DrawTexturePro(texture_, source_aircraft, dest_aircraft, {}, scale_, WHITE);
