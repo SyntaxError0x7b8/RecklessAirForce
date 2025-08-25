@@ -8,6 +8,11 @@
 
 #include "game_object.h"
 
+/**
+ * @brief Initialise object position to bottom center of the screen.
+ * It assumes a 64px sprite. Screen offset left to personal preference.
+ * @param pgraphics {pointer to GraphicsComponent derived object}
+ */
 GameObject::GameObject(GraphicsComponent *pgraphics) : p_graphics_(pgraphics) {
   const auto kwin_w = static_cast<float>(GetScreenWidth());
   const auto kwin_h = static_cast<float>(GetScreenHeight());
