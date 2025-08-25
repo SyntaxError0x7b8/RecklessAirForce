@@ -7,6 +7,11 @@
 
 #include "raymath.h"
 
+/**
+ * @brief Load textures for aircraft and its shadow.
+ * scale should match map's scale for better results.
+ * @param scale {float}
+ */
 HeroGraphicsComponent::HeroGraphicsComponent(const float scale) {
   scale_ = scale;
   texture_ = LoadTexture("../assets/heroAircraft/Blue_Plane_Sprite_3x64px.png");
@@ -54,7 +59,7 @@ void HeroGraphicsComponent::Draw(GameObject& hero) {
     (static_cast<float>(shadow_.width) / images_in_texture_) * shadow_reduction_, // will need to change orientation for left movement
     static_cast<float>(shadow_.height) * shadow_reduction_
 };
-  DrawTexturePro(shadow_, source_shadow, dest_shadow, {}, scale_, WHITE);
+  DrawTexturePro(shadow_, source_shadow, dest_shadow, {}, scale_, WHITE); // draw shadow first so aircraft is on top - if needed.
   DrawTexturePro(texture_, source_aircraft, dest_aircraft, {}, scale_, WHITE);
 }
 

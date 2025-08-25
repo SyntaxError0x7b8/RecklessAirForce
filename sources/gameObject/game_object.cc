@@ -9,7 +9,7 @@
 #include "game_object.h"
 
 /**
- * @brief Initialise object position to bottom center of the screen.
+ * @brief Initialise object's position to bottom center of the screen.
  * It assumes a 64px sprite. Screen offset left to personal preference.
  * @param pgraphics {pointer to GraphicsComponent derived object}
  */
