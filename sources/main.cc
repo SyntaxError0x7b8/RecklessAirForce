@@ -16,7 +16,7 @@ int main() {
     // Map
     auto map = Map();
 
-    // create hero
+    // create hero (todo: create factory class once complex enough)
     auto hero = GameObject(new HeroGraphicsComponent(map.GetScale()));
 
 
