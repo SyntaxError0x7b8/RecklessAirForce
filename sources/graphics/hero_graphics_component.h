@@ -1,6 +1,15 @@
-//
-// Created by qos on 8/23/25.
-//
+/**
+ * @brief concrete class that implements GraphicsComponent.
+ * This concrete class serves as a component for the game's hero.
+ * It implements abstract class GraphicsComponent and requires the use of
+ * pointers and references to a GameObject data type.
+ * Communication with other components is through position and velocity data
+ * members os such GameObject.
+ *
+ * @date 2025/08/24
+ * @author Jorge TM (SyntaxError0x7b8)
+ *
+ */
 
 #ifndef RECKLESSAIRFORCE_HERO_GRAPHICS_COMPONENT_H_
 #define RECKLESSAIRFORCE_HERO_GRAPHICS_COMPONENT_H_
@@ -15,9 +24,9 @@ public:
 
   ~HeroGraphicsComponent() override;
 
-  void Update(GameObject&) override;
+  void Update(GameObject&) override; /**< Updates container's members */
 
-  void Draw(GameObject&) override;
+  void Draw(GameObject&) override; /**< It renders object's sprite. */
 
   void SetScale(const float scale) override { scale_ = scale; };
 

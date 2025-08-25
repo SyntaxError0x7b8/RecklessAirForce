@@ -1,7 +1,10 @@
-//
-// Created by SyntaxError0x7b8on 23/08/2025.
-// Part of RAF game
-//
+/**
+ * @brief A container class meant to generate active entities.
+ * @date 2025/08/24
+ * @author Jorge TM (SyntaxError0x7b8)
+ * @param pgraphics {a pointer to GraphicsComponent interface derived object}
+ *
+ */
 
 #include "game_object.h"
 

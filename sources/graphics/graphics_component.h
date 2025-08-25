@@ -1,12 +1,19 @@
-//
-// Created by SyntaxError0x7b8on 23/08/2025.
-// Part of RAF game
-//
+/**
+ * @brief Abstract component class.
+ * This class is an interface to be used as a component of GameObject.
+ *
+ * @date 2025/08/24
+ * @author Jorge TM (SyntaxError0x7b8)
+ *
+ * Including "game-object.h" creates a circular dependency. Hence, the class is
+ * declared and only pointers and reference of GameObject can be used.
+ *
+ */
 
 #ifndef RECKLESSAIRFORCE_GRAPHICS_COMPONENT_H_
 #define RECKLESSAIRFORCE_GRAPHICS_COMPONENT_H_
 
-//#include "game_object.h" // creates circular dependency
+
 #include "raylib.h"
 
 class GameObject; // to avoid circular dependency. Use only ref or ptr to GameObject
