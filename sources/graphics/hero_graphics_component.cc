@@ -8,8 +8,9 @@
 #include "raymath.h"
 
 /**
- * @brief Load textures for aircraft and its shadow.
- * scale should match map's scale for better results.
+ * @brief Load textures for aircraft and its shadow. scale should match map's
+ * scale for better results.
+ *
  * @param scale {float}
  */
 HeroGraphicsComponent::HeroGraphicsComponent(const float scale) {
