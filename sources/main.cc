@@ -1,3 +1,11 @@
+/**
+ * A Top-Down aircraft shooting game. This is a 1943-style inspired game. Its
+ * is not meant to be a commercial product, but a learning project. Its main
+ * focus is on how to implement different software patterns. In particular the
+ * preference of composition over inheritance. It will also serve the purpose
+ * of practicing automatic documentation generation and automatic testing.
+ */
+
 #include "raylib.h"
 
 
@@ -24,26 +32,27 @@ int main() {
 
     SetTargetFPS(FPS);
     while (!WindowShouldClose()) {
-        /*
-         * GAME VARIABLES
-         */
+        //=========================================
+        //GAME VARIABLES
+        //=========================================
         const float kdT= GetFrameTime(); // frames per second
 
 
 
 
-        /*
-         * GAME UPDATE
-         */
+        //=========================================
+        // GAME UPDATE
+        //=========================================
         map.ScrollMap(kdT);
         hero.Update(kdT);
 
 
 
 
-        /*
-         * GAME DRAWING
-         */
+        //========================================
+        // GAME DRAWING
+        //========================================
+
         BeginDrawing();
         ClearBackground(WHITE);
         // draw the map background
