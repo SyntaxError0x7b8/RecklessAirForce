@@ -10,6 +10,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+enable_testing()
+
 include(FetchContent)
 
 ##########################################################################################
@@ -78,10 +80,10 @@ set(PROJECT_INCLUDE "${CMAKE_CURRENT_LIST_DIR}/sources/"
 )
 
 
-
+# testing
+add_subdirectory(test)
 # Declaring our executable
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
-add_subdirectory(Google_tests)
 target_sources(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCES})
 target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_INCLUDE})
 
