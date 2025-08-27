@@ -15,8 +15,8 @@
  */
 HeroGraphicsComponent::HeroGraphicsComponent(const float scale) {
   scale_ = scale;
-  texture_ = LoadTexture("../assets/heroAircraft/Blue_Plane_Sprite_3x64px.png");
-  shadow_ = LoadTexture("../assets/heroAircraft/Shadow_Plane_Sprite_3x64px.png");
+  texture_ = LoadTexture("../../assets/heroAircraft/Blue_Plane_Sprite_3x64px.png");
+  shadow_ = LoadTexture("../../assets/heroAircraft/Shadow_Plane_Sprite_3x64px.png");
   shadow_offset_ = {
     (static_cast<float>(texture_.width) / images_in_texture_) * scale_,
     static_cast<float>(texture_.height) * scale_
