@@ -25,7 +25,7 @@ public:
 
 private:
 
-    const Texture2D texture_{LoadTexture("../../assets/ground/RAF_Desert.png")};
+    const Texture2D texture_{LoadTexture("../assets/ground/RAF_Desert.png")};
 
     float map_scale_ {1.0f};
 
