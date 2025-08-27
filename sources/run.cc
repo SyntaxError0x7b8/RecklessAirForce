@@ -11,6 +11,7 @@
 #include "raylib.h"
 #include "run.h"
 
+
 int run() {
 
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, TITLE);
