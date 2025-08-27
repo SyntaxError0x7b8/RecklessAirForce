@@ -10,7 +10,12 @@ I strongly encourage you to confirm it before using any of the files in this rep
 
 Application tested on Ubuntu 22.04.3 LTS
 
+Although I initially used FetchContent, it created too many difficulties for unit
+testing that distracted me from creating the game. Hence, both Raylib 5.5 and Catch2 v3
+are installed system-wide.
+
 Requriements:
+Raylib 5.5
 CMake 3.31 or later
 C++ C17
-Raylib 5.5
+Catch2 v3

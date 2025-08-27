@@ -1,10 +1,9 @@
 //
-// Created by qos on 8/26/25.
+// Created by qos on 8/27/25.
 //
-
+#include "../src/hero_graphics_component.h"
 #include "catch2/catch_test_macros.hpp"
-#include "../sources/graphics/hero_graphics_component.h"
-//#include  "../cmake-build-debug/_deps/raylib-src/src/raylib.h"
+
 
 TEST_CASE("HeroScale" "[HeroGraphicsTest]") {
   auto *hero = new HeroGraphicsComponent(2.3f);
