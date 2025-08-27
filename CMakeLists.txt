@@ -70,7 +70,9 @@ add_git_dependency(
 # Adding our source files
 # Define PROJECT_SOURCES as a list of all source files
 file(GLOB_RECURSE PROJECT_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_LIST_DIR}/sources/*.cc"
-        "${CMAKE_CURRENT_LIST_DIR}/sources/*/*.cc")
+        "${CMAKE_CURRENT_LIST_DIR}/sources/gameObject/*.cc"
+        "${CMAKE_CURRENT_LIST_DIR}/sources/graphics/*.cc"
+        "${CMAKE_CURRENT_LIST_DIR}/sources/map/*.cc")
 
 # Define PROJECT_INCLUDE to be the path to the include directory of the project
 set(PROJECT_INCLUDE "${CMAKE_CURRENT_LIST_DIR}/sources/"
@@ -82,6 +84,7 @@ set(PROJECT_INCLUDE "${CMAKE_CURRENT_LIST_DIR}/sources/"
 
 # testing
 add_subdirectory(test)
+
 # Declaring our executable
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
 target_sources(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCES})
