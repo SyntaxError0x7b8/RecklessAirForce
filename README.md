@@ -10,12 +10,15 @@ I strongly encourage you to confirm it before using any of the files in this rep
 
 Application tested on Ubuntu 22.04.3 LTS
 
-Although I initially used FetchContent, it created too many difficulties for unit
-testing that distracted me from creating the game. Hence, both Raylib 5.5 and Catch2 v3
-are installed system-wide.
+Although I initially used FetchContent, and it worked, I have it now installed in my system.
 
-Requriements:
-Raylib 5.5
-CMake 3.31 or later
-C++ C17
-Catch2 v3
+I have tried for 1 week non-stop to integrate either a testing framework (gtest and catch2) or
+manual "no-framework" testing. I failed miserably. I will continue with the project and tray again
+once I recover emmotionally. ;)
+
+<h3>Requriements:</h3>h3>
+<ul>
+<li>Raylib 5.5 ( https://github.com/raysan5/raylib )</li>li>
+<li>CMake 4.0 or later (although tested with v3.31 without issues</li>
+<li>C++ C17</li>
+</ul>ul>
