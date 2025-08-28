@@ -9,10 +9,10 @@
 #include "gameObject/game_object.h"
 #include "map/map.h"
 #include "raylib.h"
-#include "run.h"
+#include "raflib.h"
 
 
-int run() {
+int raflib() {
 
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, TITLE);
 

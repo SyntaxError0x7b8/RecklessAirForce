@@ -3,12 +3,12 @@
 // Part of RAF game
 //
 
-#ifndef RECKLESSAIRFORCE_GAME_OBJECT_H_
-#define RECKLESSAIRFORCE_GAME_OBJECT_H_
+#ifndef RAFLIB_GAME_OBJECT_H_
+#define RAFLIB_GAME_OBJECT_H_
 
 
 //#include "graphics_component.h"
-#include "hero_graphics_component.h"
+#include "../graphics/hero_graphics_component.h"
 
 class GameObject {
 public:
@@ -44,4 +44,4 @@ private:
 };
 
 
-#endif //RECKLESSAIRFORCE_GAME_OBJECT_H_
+#endif //RAFLIB_GAME_OBJECT_H_

@@ -3,8 +3,8 @@
 // Part of RAF game
 //
 
-#ifndef RECKLESSAIRFORCE_MAP_H_
-#define RECKLESSAIRFORCE_MAP_H_
+#ifndef RAFLIB_MAP_H_
+#define RAFLIB_MAP_H_
 
 #include "raylib.h"
 
@@ -35,4 +35,4 @@ private:
 };
 
 
-#endif //RECKLESSAIRFORCE_MAP_H_
+#endif //RAFLIB_MAP_H_

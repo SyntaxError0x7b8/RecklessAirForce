@@ -2,7 +2,7 @@
 # https://github.com/tupini07/raylib-cpp-cmake-template/blob/main/CMakeLists.txt
 # 2025-08-10
 
-cmake_minimum_required(VERSION 3.31)
+cmake_minimum_required(VERSION 4.0)
 
 project(RecklessAirForce)
 
@@ -32,91 +32,41 @@ endfunction()
 # Dependencies
 
 #Add Raylib
-#[[set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE) # don't build the supplied examples
+set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE) # don't build the supplied examples
 set(BUILD_GAMES    OFF CACHE BOOL "" FORCE) # don't build the supplied example games
 add_git_dependency(
         raylib
         https://github.com/raysan5/raylib.git
         5.5
-)]]
-
-# Add LDtkLoader
-#[[add_git_dependency(
-        LDtkLoader
-        https://github.com/Madour/LDtkLoader.git
-        1.5.3.1
-)]]
-
-# Add Box2d
-#[[set(BOX2D_BUILD_UNIT_TESTS OFF CACHE BOOL "" FORCE)
-set(BOX2D_BUILD_TESTBED OFF CACHE BOOL "" FORCE)
-add_git_dependency(
-        box2d
-        https://github.com/erincatto/box2d.git
-        v2.4.1
-)]]
-
-# Add {fmt} library
-#[[add_git_dependency(
-        fmt
-        https://github.com/fmtlib/fmt.git
-        11.1.2
-)]]
-
-##########################################################################################
-# Project executable setup
-##########################################################################################
-
-# Adding our source files
-# Define PROJECT_SOURCES as a list of all source files
-file(GLOB_RECURSE RAF_PROJECT_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_LIST_DIR}/src/*.cc"
-        "${CMAKE_CURRENT_LIST_DIR}/src/gameObject/*.cc"
-        "${CMAKE_CURRENT_LIST_DIR}/src/graphics/*.cc"
-        "${CMAKE_CURRENT_LIST_DIR}/src/map/*.cc"
-        "${CMAKE_CURRENT_LIST_DIR}/catch2_test"
-)
-message("RAF PROJECT SOURCES: ${RAF_PROJECT_SOURCES}")
-
-# Define PROJECT_INCLUDE to be the path to the include directory of the project
-set(RAF_PROJECT_INCLUDE "${CMAKE_CURRENT_LIST_DIR}/src/"
-        "${CMAKE_CURRENT_LIST_DIR}/src/gameObject/"
-        "${CMAKE_CURRENT_LIST_DIR}/src/map/"
-        "${CMAKE_CURRENT_LIST_DIR}/src/graphics/"
-        "${CMAKE_CURRENT_LIST_DIR}/src/graphics/"
-        "${CMAKE_CURRENT_LIST_DIR}/catch2_test"
 )
 
+set(HEADER_FILES
+        ${CMAKE_CURRENT_LIST_DIR}/src/raflib.h
+        ${CMAKE_CURRENT_LIST_DIR}/src/map/map.h
+        ${CMAKE_CURRENT_LIST_DIR}/src/gameObject/game_object.h
+        ${CMAKE_CURRENT_LIST_DIR}/src/graphics/graphics_component.h
+        ${CMAKE_CURRENT_LIST_DIR}/src/graphics/hero_graphics_component.h
+        ################################################################
+)
+
+set(SOURCE_FILES
+        ${CMAKE_CURRENT_LIST_DIR}/main.cc
+        #####################################################################
+        ${CMAKE_CURRENT_LIST_DIR}/src/raflib.cc
+        ${CMAKE_CURRENT_LIST_DIR}/src/map/map.cc
+        ${CMAKE_CURRENT_LIST_DIR}/src/gameObject/game_object.cc
+        ${CMAKE_CURRENT_LIST_DIR}/src/graphics/graphics_component.cc
+        ${CMAKE_CURRENT_LIST_DIR}/src/graphics/hero_graphics_component.cc
+        #####################################################################
+        ${CMAKE_CURRENT_LIST_DIR}/tests/all_tests.cc
+)
+
+add_library(raflib STATIC ${HEADER_FILES} ${SOURCE_FILES})
+
+target_include_directories(raflib PUBLIC .)
+
+add_executable(RecklessAirForce ${SOURCE_FILES})
 
 
-
-
-# Declaring our executable
-add_executable(${PROJECT_NAME} ${RAF_PROJECT_SOURCES})
-target_sources(${PROJECT_NAME} PRIVATE ${RAF_PROJECT_SOURCES})
-target_include_directories(${PROJECT_NAME} PRIVATE ${RAF_PROJECT_INCLUDE})
-
-
-target_link_libraries(${PROJECT_NAME} PRIVATE raylib)
-#target_link_libraries(${PROJECT_NAME} PRIVATE raygui)
-#target_link_libraries(${PROJECT_NAME} PRIVATE LDtkLoader::LDtkLoader)
-#target_link_libraries(${PROJECT_NAME} PRIVATE box2d)
-#target_link_libraries(${PROJECT_NAME} PRIVATE fmt)
-
-
-
-##########################################################################################
-# Project build settings
-##########################################################################################
-
-add_definitions(-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
-
-# Setting ASSETS_PATH
-if (CMAKE_BUILD_TYPE MATCHES "Debug")
-    SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -O0 -DDEBUG")
-
-    # Set the asset path macro to the absolute path on the dev machine
-    target_compile_definitions(${PROJECT_NAME} PUBLIC ASSETS_PATH="${CMAKE_CURRENT_SOURCE_DIR}/assets/")
-else()
-    # Set the asset path macro in release mode to a relative path that assumes the assets folder is in the same directory as the game executable
-    target_compile_definitions(${PROJECT_NAME} PUBLIC ASSETS_PATH="./assets/")
-endif()
+target_link_libraries(RecklessAirForce PRIVATE raylib)
+#target_link_libraries(RecklessAirForce PRIVATE raflib)
