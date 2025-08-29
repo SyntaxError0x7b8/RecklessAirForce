@@ -20,6 +20,12 @@ GameObject::GameObject(GraphicsComponent *pgraphics) : p_graphics_(pgraphics) {
     (kwin_w - 32.0f) / 2.0f,
     kwin_h - (256.0f * p_graphics_->GetScale())
   };
+  // screen & collision rectangle
+  rect_ = {screen_position_.x,
+    screen_position_.y,
+    p_graphics_->GetTextureDimensions().x,
+    p_graphics_->GetTextureDimensions().y
+  };
 
 }
 

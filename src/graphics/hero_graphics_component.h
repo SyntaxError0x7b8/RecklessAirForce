@@ -32,6 +32,8 @@ public:
 
   float GetScale() override { return scale_; };
 
+  Vector2 GetTextureDimensions() override { return  texture_dimensions_; }
+
 private:
 
   float images_in_texture_ {3.0f};
@@ -39,6 +41,7 @@ private:
   float right_or_left_ {1.0f};
 
   float shadow_reduction_ {0.7f};
+
 
 };
 

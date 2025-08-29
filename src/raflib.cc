@@ -5,6 +5,8 @@
  * preference of composition over inheritance. It will also serve the purpose
  * of practicing automatic documentation generation and automatic testing.
  */
+#include <cassert>
+#include <iostream>
 
 #include "gameObject/game_object.h"
 #include "map/map.h"

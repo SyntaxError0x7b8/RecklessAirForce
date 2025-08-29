@@ -21,6 +21,8 @@ HeroGraphicsComponent::HeroGraphicsComponent(const float scale) {
     (static_cast<float>(texture_.width) / images_in_texture_) * scale_,
     static_cast<float>(texture_.height) * scale_
   };
+  texture_dimensions_.x = (static_cast<float>(texture_.width) / images_in_texture_) * scale_;
+  texture_dimensions_.y = static_cast<float>(texture_.height) * scale_;
 }
 
 HeroGraphicsComponent::~HeroGraphicsComponent() {
@@ -63,4 +65,5 @@ void HeroGraphicsComponent::Draw(GameObject& hero) {
   DrawTexturePro(shadow_, source_shadow, dest_shadow, {}, scale_, WHITE); // draw shadow first so aircraft is on top - if needed.
   DrawTexturePro(texture_, source_aircraft, dest_aircraft, {}, scale_, WHITE);
 }
+
 

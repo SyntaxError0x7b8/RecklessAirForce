@@ -34,6 +34,8 @@ public:
 
   virtual float GetScale() { return scale_; };
 
+  virtual Vector2 GetTextureDimensions() { return texture_dimensions_; };
+
 protected:
   float images_in_texture_{};
 
@@ -48,6 +50,8 @@ protected:
   Vector2 shadow_offset_{};
 
   Vector2 shadow_position_{};
+
+  Vector2 texture_dimensions_{};
 
 
 };

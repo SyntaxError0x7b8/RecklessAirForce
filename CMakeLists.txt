@@ -1,5 +1,6 @@
-# based on a template by tupini07
+# initially started from a template by tupini07
 # https://github.com/tupini07/raylib-cpp-cmake-template/blob/main/CMakeLists.txt
+# I have only reused the function, but I have left the link for future rereference.
 # 2025-08-10
 
 cmake_minimum_required(VERSION 4.0)
@@ -40,12 +41,16 @@ add_git_dependency(
         5.5
 )
 
+# once/if test implemented successfully, change into
+# file(GLOB_RECURSE PROJECT_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_LIST_DIR}/src/*.cc")
+
 set(HEADER_FILES
         ${CMAKE_CURRENT_LIST_DIR}/src/raflib.h
         ${CMAKE_CURRENT_LIST_DIR}/src/map/map.h
         ${CMAKE_CURRENT_LIST_DIR}/src/gameObject/game_object.h
         ${CMAKE_CURRENT_LIST_DIR}/src/graphics/graphics_component.h
         ${CMAKE_CURRENT_LIST_DIR}/src/graphics/hero_graphics_component.h
+        ${CMAKE_CURRENT_LIST_DIR}/src/input/input_handler.h
         ################################################################
 )
 
@@ -57,6 +62,7 @@ set(SOURCE_FILES
         ${CMAKE_CURRENT_LIST_DIR}/src/gameObject/game_object.cc
         ${CMAKE_CURRENT_LIST_DIR}/src/graphics/graphics_component.cc
         ${CMAKE_CURRENT_LIST_DIR}/src/graphics/hero_graphics_component.cc
+        ${CMAKE_CURRENT_LIST_DIR}/src/input/input_handler.cc
         #####################################################################
         ${CMAKE_CURRENT_LIST_DIR}/tests/all_tests.cc
 )

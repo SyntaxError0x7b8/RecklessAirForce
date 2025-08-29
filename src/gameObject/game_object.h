@@ -9,6 +9,7 @@
 
 //#include "graphics_component.h"
 #include "../graphics/hero_graphics_component.h"
+#include "../input/input_handler.h"
 
 class GameObject {
 public:
@@ -37,8 +38,12 @@ private:
 
   Vector2 velocity_{};
 
-    // (abstract) create hero_graphics_component : graphics_component class
+  Rectangle rect_{};
+
+  // (abstract) create hero_graphics_component : graphics_component class
   GraphicsComponent *p_graphics_{nullptr};
+
+  InputHandler *p_input_{nullptr};
 
 
 };
