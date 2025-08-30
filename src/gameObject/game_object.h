@@ -13,7 +13,7 @@
 
 class GameObject {
 public:
-  explicit GameObject(GraphicsComponent *);
+  explicit GameObject(GraphicsComponent *, InputHandler *);
 
   ~GameObject();
 
@@ -31,9 +31,27 @@ public:
 
   void SetVelocity(const Vector2 velocity) { velocity_ = velocity; }
 
+  float GetReactionTime() const { return reaction_time_; }
+
+  float GetLastUpdateTime() const { return last_update_time_; }
+
+  void ResetLastUpdateTime() { last_update_time_ = 0.0f; }
+
+  void UpdateLastUpdateTime(const float dtime) { last_update_time_ += dtime; }
+
+  Rectangle GetRectangle() const { return rect_;}
+
+  void UpdateRectangle(float x, float y);
+
+  void UpdateRectangle(Vector2 newPosition);
+
   //Factory method to be implemented
 
 private:
+  float reaction_time_ {0.64f}; // will move faster after this time elapsed
+
+  float last_update_time_ {};
+
   Vector2 screen_position_{};
 
   Vector2 velocity_{};

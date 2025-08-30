@@ -13,7 +13,9 @@
  * It assumes a 64px sprite. Screen offset left to personal preference.
  * @param pgraphics {pointer to GraphicsComponent derived object}
  */
-GameObject::GameObject(GraphicsComponent *pgraphics) : p_graphics_(pgraphics) {
+GameObject::GameObject(GraphicsComponent *pgraphics, InputHandler *pinput) :
+    p_graphics_(pgraphics),
+    p_input_(pinput) {
   const auto kwin_w = static_cast<float>(GetScreenWidth());
   const auto kwin_h = static_cast<float>(GetScreenHeight());
   screen_position_ = {
@@ -31,13 +33,24 @@ GameObject::GameObject(GraphicsComponent *pgraphics) : p_graphics_(pgraphics) {
 
 GameObject::~GameObject() {
   delete p_graphics_;
+  delete p_input_;
 }
 
 void GameObject::Update(const float kdeltaTime) {
-  // deltaTime will be necessary later
+
+  p_input_->Update(*this, kdeltaTime);
   p_graphics_->Update(*this);
+
 }
 
 void GameObject::Draw() {
   p_graphics_->Draw(*this);
+}
+void GameObject::UpdateRectangle(const float x, const float y) {
+  rect_.x = x;
+  rect_.y = y;
+}
+void GameObject::UpdateRectangle(const Vector2 newPosition) {
+  rect_.x = newPosition.x;
+  rect_.y = newPosition.y;
 }

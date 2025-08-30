@@ -7,6 +7,7 @@
 
 //#include "../gameObject/game_object.h"
 #include "raylib.h"
+
 class GameObject; // to avoid circular dependency. Use only ref or ptr to GameObject
 
 class InputHandler {
@@ -15,7 +16,7 @@ class InputHandler {
 
   ~InputHandler() = default;
 
-  void Update(GameObject &hero);
+  void Update(GameObject &hero, float deltaTime);
 
   bool InsideScreen(Rectangle rect);
 
@@ -25,6 +26,8 @@ class InputHandler {
   Vector2 last_position_ {};
 
   Vector2 velocity_ {};
+
+  float velocity_scale_ {3.0f};
 };
 
 #endif  // RECKLESSAIRFORCE_INPUT_HANDLER_H

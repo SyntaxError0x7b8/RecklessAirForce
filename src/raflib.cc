@@ -22,7 +22,8 @@ int raflib() {
     auto map = Map();
 
     // create hero (TODO_LATER: create factory class once complex enough)
-    auto hero = GameObject(new HeroGraphicsComponent(map.GetScale()));
+    auto hero = GameObject(new HeroGraphicsComponent(map.GetScale()),
+      new InputHandler());
 
 
 
