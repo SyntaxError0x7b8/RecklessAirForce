@@ -17,8 +17,7 @@
 #include "graphics_component.h"
 
 
-class HeroGraphicsComponent final : public GraphicsComponent
-{
+class HeroGraphicsComponent final : public GraphicsComponent {
 public:
   explicit HeroGraphicsComponent(float scale);
 
@@ -41,6 +40,16 @@ private:
   float right_or_left_ {1.0f};
 
   float shadow_reduction_ {0.7f};
+
+  Vector2 jet_position_{};
+
+  Vector2 jet_offset_{};
+
+  Texture jet_texture_{};
+
+  int jet_frame_{};
+
+  int jet_images {6};
 
 
 };
