@@ -28,7 +28,7 @@ HeroGraphicsComponent::HeroGraphicsComponent(const float scale) {
   jet_offset_ = {
     (((static_cast<float>(texture_.width) / images_in_texture_) * scale_) /
       2.0f) -5.0f, // -5.0f trial and error to aircraft's shape
-    static_cast<float>(texture_.height) * scale_
+    static_cast<float>(texture_.height) * scale_ + 3.0f
   };
 }
 
@@ -52,31 +52,32 @@ void HeroGraphicsComponent::Update(GameObject& hero) {
   if (hero.GetVelocity().x == 0.0f) {
     frame_ = 0;
     jet_offset_.x = (((static_cast<float>(texture_.width) / images_in_texture_)
-      * scale_) / 2.0f) -5.0f;
+      * scale_) / 2.0f) -4.0f;
   }
   else { // moving sideways
     if (hero.GetLastUpdateTime() < hero.GetReactionTime()) {
       frame_ = 1; // started moving so next frame
-      const float adjust_pos = (right_or_left_ < 0.0f) ? -7.0f : 0.0f;
+      const float adjust_pos = (right_or_left_ < 0.0f) ? -6.0f : 1.0f;
       jet_offset_.x = (((static_cast<float>(texture_.width) / images_in_texture_)
         * scale_) / 2.0f) + adjust_pos;
     }
     else {
       frame_ = 2; // moving for longer, last frame
-      const float adjust_pos = (right_or_left_ < 0.0f) ? -10.0f : +5.0f;
+      const float adjust_pos = (right_or_left_ < 0.0f) ? -8.0f : +3.0f;
       jet_offset_.x = (((static_cast<float>(texture_.width) / images_in_texture_)
         * scale_) / 2.0f) + adjust_pos;
     }
   }
   if (last_frame_update_ >= frame_update_rate_) {
-    jet_frame_ = (jet_frame_++) % jet_images;
+    jet_frame_++;
+    jet_frame_ %= jet_images_;
     last_frame_update_ = 0.0f;
   }
   else {
     last_frame_update_ += GetFrameTime();
   }
 
-  // draw shado right-below aircraft
+  // draw shadow right-below aircraft
   shadow_position_ = Vector2Add(hero.GetScreenPosition(), shadow_offset_);
   // below center aircraft
   jet_position_ = Vector2Add(hero.GetScreenPosition(), jet_offset_);
@@ -119,16 +120,16 @@ void HeroGraphicsComponent::Draw(GameObject& hero) {
     static_cast<float>(shadow_.height) * shadow_reduction_
 };
   // jet stream
-  Rectangle source_jet {
-    static_cast<float>(jet_texture_.width) * jet_frame_,
+  const Rectangle source_jet {
+    (static_cast<float>(jet_texture_.width) / jet_images_) * jet_frame_,
     static_cast<float>(jet_texture_.height),
-    (static_cast<float>(jet_texture_.width) / jet_images),
+    (static_cast<float>(jet_texture_.width) / jet_images_),
     static_cast<float>(jet_texture_.height)
     };
-  Rectangle dest_jet {
+  const Rectangle dest_jet {
   jet_position_.x,
   jet_position_.y,
-  ((static_cast<float>(jet_texture_.width) / jet_images) / 2.0f) * jet_size_,
+  ((static_cast<float>(jet_texture_.width) / jet_images_) / 2.0f) * jet_size_,
   static_cast<float>(jet_texture_.height) * jet_size_
   };
 

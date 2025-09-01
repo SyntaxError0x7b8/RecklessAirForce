@@ -49,7 +49,7 @@ private:
 
   int jet_frame_{};
 
-  int jet_images {6};
+  int jet_images_ {6};
 
   float jet_size_ {2.0f};
 
