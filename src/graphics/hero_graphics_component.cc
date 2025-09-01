@@ -9,7 +9,7 @@
 
 /**
  * @brief Load textures for aircraft and its shadow. scale should match map's
- * scale for better results.
+ * scale for better results. It also initialises the aircraft's jet exhaust
  *
  * @param scale {float}
  */
@@ -32,12 +32,19 @@ HeroGraphicsComponent::HeroGraphicsComponent(const float scale) {
   };
 }
 
+/**
+ * @brief unload the textures used for aircraft, shadow and exhaust.
+ */
 HeroGraphicsComponent::~HeroGraphicsComponent() {
   UnloadTexture(shadow_);
   UnloadTexture(texture_);
   UnloadTexture(jet_texture_);
 }
 
+/**
+ * @brief updates frame to be used and direction of movement.
+ * @param hero {GameObject, required for position and velocity}
+ */
 void HeroGraphicsComponent::Update(GameObject& hero) {
   right_or_left_= (hero.GetVelocity().x < 0.0f) ? -1.0f : 1.0f;
   // update airplane / shadow frame
@@ -69,16 +76,19 @@ void HeroGraphicsComponent::Update(GameObject& hero) {
     last_frame_update_ += GetFrameTime();
   }
 
-
+  // draw shado right-below aircraft
   shadow_position_ = Vector2Add(hero.GetScreenPosition(), shadow_offset_);
+  // below center aircraft
   jet_position_ = Vector2Add(hero.GetScreenPosition(), jet_offset_);
-
-
 
 
 }
 
-
+/**
+ * @brief from texture image to screen position. It selects in a rectangle the
+ * correct frame in order to render it on the screen (visible or not).
+ * @param hero {GameObject}
+ */
 void HeroGraphicsComponent::Draw(GameObject& hero) {
   const float hero_width = (static_cast<float>(texture_.width) / images_in_texture_);
   const float shadow_width = (static_cast<float>(shadow_.width) / images_in_texture_);
