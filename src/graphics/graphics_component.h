@@ -53,6 +53,10 @@ protected:
 
   Vector2 texture_dimensions_{};
 
+  float last_frame_update_{};
+
+  float frame_update_rate_{0.5f};
+
 
 };
 

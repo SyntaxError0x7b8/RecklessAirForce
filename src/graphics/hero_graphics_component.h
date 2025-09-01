@@ -51,6 +51,8 @@ private:
 
   int jet_images {6};
 
+  float jet_size_ {2.0f};
+
 
 };
 
