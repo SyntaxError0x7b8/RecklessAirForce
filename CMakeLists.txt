@@ -49,6 +49,7 @@ set(HEADER_FILES
         ${CMAKE_CURRENT_LIST_DIR}/src/map/map.h
         ${CMAKE_CURRENT_LIST_DIR}/src/gameObject/game_object.h
         ${CMAKE_CURRENT_LIST_DIR}/src/graphics/graphics_component.h
+        ${CMAKE_CURRENT_LIST_DIR}/src/graphics/proton_graphics.h
         ${CMAKE_CURRENT_LIST_DIR}/src/graphics/hero_graphics_component.h
         ${CMAKE_CURRENT_LIST_DIR}/src/input/input_handler.h
         ################################################################
@@ -61,6 +62,7 @@ set(SOURCE_FILES
         ${CMAKE_CURRENT_LIST_DIR}/src/map/map.cc
         ${CMAKE_CURRENT_LIST_DIR}/src/gameObject/game_object.cc
         ${CMAKE_CURRENT_LIST_DIR}/src/graphics/graphics_component.cc
+        ${CMAKE_CURRENT_LIST_DIR}/src/graphics/proton_graphics.c
         ${CMAKE_CURRENT_LIST_DIR}/src/graphics/hero_graphics_component.cc
         ${CMAKE_CURRENT_LIST_DIR}/src/input/input_handler.cc
         #####################################################################

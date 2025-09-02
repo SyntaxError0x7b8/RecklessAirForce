@@ -1,0 +1,10 @@
+//
+// Created by qos on 9/2/25.
+//
+
+#ifndef RECKLESSAIRFORCE_PROTON_GRAPHICS_H
+#define RECKLESSAIRFORCE_PROTON_GRAPHICS_H
+
+class ProtonGraphics {};
+
+#endif  // RECKLESSAIRFORCE_PROTON_GRAPHICS_H
