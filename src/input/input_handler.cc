@@ -7,6 +7,12 @@
 
 #include "../gameObject/game_object.h"
 
+/**
+ * @brief Reads input and update GameObject instance velocity and position.
+ * Used to move hero's aircraft on the screen.
+ * @param hero {GameObject, hero's aircraft}
+ * @param deltaTime {float}
+ */
 void InputHandler::Update(GameObject& hero, const float deltaTime) {
   // a key redefinition function to be implemented on the next iteration
 
@@ -85,6 +91,11 @@ void InputHandler::Update(GameObject& hero, const float deltaTime) {
 
 }
 
+/**
+ * @brief Checks whether a Rectangle is inside the screen
+ * @param rect {Rectangle}
+ * @return true if visible
+ */
 bool InputHandler::InsideScreen(const Rectangle rect) {
   return (
     rect.x >= 0 &&
