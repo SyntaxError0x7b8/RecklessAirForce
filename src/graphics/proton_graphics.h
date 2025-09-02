@@ -34,6 +34,8 @@ class ProtonGraphics : public GraphicsComponent {
 
   bool fired_{};
 
+  bool hit_{};
+
 
 };
 

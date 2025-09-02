@@ -23,8 +23,13 @@ ProtonGraphics::~ProtonGraphics() {
 }
 
 void ProtonGraphics::Update(GameObject&) {
-
+  if (IsVisible(proton_bounds_, fired_) && !hit_) {
+    proton_position_.y += proton_speed_;
+  }
+  // outside screen or hit will destroy object: handled in another class
 }
+
+
 
 bool ProtonGraphics::IsVisible(const Rectangle rectangle, const bool fired) {
   const bool inside = ((rectangle.x >= -proton_texture_.width) &&
