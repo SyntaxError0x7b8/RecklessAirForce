@@ -36,6 +36,9 @@ public:
 
   virtual Vector2 GetTextureDimensions() { return texture_dimensions_; };
 
+  virtual bool IsVisible(Rectangle, bool) { return true; }
+
+
 protected:
   float images_in_texture_{};
 
