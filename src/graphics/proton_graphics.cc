@@ -28,8 +28,24 @@ void ProtonGraphics::Update(GameObject&) {
   }
   // outside screen or hit will destroy object: handled in another class
 }
-
-
+void ProtonGraphics::Draw(GameObject&) {
+  //source
+  Rectangle proton_source {
+    0.0f,
+      0.0f,
+      static_cast<float>(proton_texture_.width),
+      static_cast<float>(proton_texture_.height)
+    };
+  // dest on screen
+  Rectangle proton_dest {
+    proton_position_.x,
+    proton_position_.y,
+    static_cast<float>(proton_bounds_.width),
+    static_cast<float>(proton_bounds_.height)
+    };
+  //draw it
+  DrawTexturePro(proton_texture_,proton_source, proton_dest, {},0.0f, WHITE);
+}
 
 bool ProtonGraphics::IsVisible(const Rectangle rectangle, const bool fired) {
   const bool inside = ((rectangle.x >= -proton_texture_.width) &&
