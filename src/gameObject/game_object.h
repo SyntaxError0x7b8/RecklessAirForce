@@ -9,7 +9,7 @@
 
 //#include "graphics_component.h"
 #include "../graphics/hero_graphics_component.h"
-#include "../input/input_handler.h"
+#include "../input/movement_handler.h"
 
 class GameObject {
 public:

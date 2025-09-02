@@ -2,10 +2,9 @@
 // Created by qos on 8/28/25.
 //
 
-#include "input_handler.h"
-#include "raymath.h"
-
 #include "../gameObject/game_object.h"
+#include "movement_handler.h"
+#include "raymath.h"
 
 /**
  * @brief Reads input and update GameObject instance velocity and position.
