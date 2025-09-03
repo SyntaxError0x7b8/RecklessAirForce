@@ -23,10 +23,11 @@ ProtonGraphics::~ProtonGraphics() {
 }
 
 void ProtonGraphics::Update() {
-  if (IsVisible(proton_bounds_, fired_) && !hit_) {
-    proton_position_.y += proton_speed_;
-  }
-  // outside screen or hit will destroy object: handled in another class
+  // function called only if visible and not hit
+  proton_position_.y += proton_speed_;
+  proton_bounds_.y += proton_speed_;
+
+  // trying the use of smart pointers to avoid memory leaks
 }
 void ProtonGraphics::Draw() {
   //source
@@ -47,12 +48,17 @@ void ProtonGraphics::Draw() {
   DrawTexturePro(proton_texture_,proton_source, proton_dest, {},0.0f, WHITE);
 }
 
-bool ProtonGraphics::IsVisible(const Rectangle rectangle, const bool fired) {
+bool ProtonGraphics::IsVisible(const Rectangle rectangle) {
   const bool inside = ((rectangle.x >= -proton_texture_.width) &&
       (rectangle.x < GetScreenWidth()) &&
       (rectangle.y >= -proton_texture_.height) &&
       (rectangle.y < GetScreenHeight()));
-  return (inside && fired);
+  return inside;
+}
+
+bool ProtonGraphics::SetHit() {
+  if (!hit_) { hit_ = true; }
+  return hit_;
 }
 
 

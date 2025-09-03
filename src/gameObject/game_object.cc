@@ -13,10 +13,14 @@
  * passed as arguments.
  * @param pgraphics {pointer to GraphicsComponent derived object}
  * @param pinput {handle user input for player controlled objects}
+ * @param sp_hero_shoot {std::shared_ptr<HeroShoot> bullets fired}
  */
-GameObject::GameObject(GraphicsComponent *pgraphics, InputHandler *pinput) :
+GameObject::GameObject(GraphicsComponent *pgraphics,
+  InputHandler *pinput,
+  std::shared_ptr<HeroShoot> hs) :
     p_graphics_(pgraphics),
-    p_input_(pinput) {
+    p_input_(pinput){
+  sp_shoot_.swap(hs);
   const auto kwin_w = static_cast<float>(GetScreenWidth());
   const auto kwin_h = static_cast<float>(GetScreenHeight());
   shared_scale_ = p_graphics_->GetScale();
@@ -52,6 +56,7 @@ void GameObject::Update(const float kdeltaTime) {
 
   p_input_->Update(*this, kdeltaTime);
   p_graphics_->Update(*this);
+  sp_shoot_->Update(*this);
 
 }
 
@@ -60,6 +65,7 @@ void GameObject::Update(const float kdeltaTime) {
  */
 void GameObject::Draw() {
   p_graphics_->Draw(*this);
+  sp_shoot_->Draw();
 }
 
 /**

@@ -22,8 +22,9 @@ int raflib() {
     auto map = Map();
 
     // create hero (TODO_LATER: create factory class once complex enough)
+    auto proton = std::make_shared<HeroShoot>();
     auto hero = GameObject(new HeroGraphicsComponent(map.GetScale()),
-      new InputHandler());
+      new InputHandler(), proton);
 
 
 

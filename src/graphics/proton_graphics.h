@@ -17,7 +17,13 @@ class ProtonGraphics {
 
   void Draw();
 
-  bool IsVisible(Rectangle, bool);
+  bool IsVisible(Rectangle);
+
+  [[nodiscard]] bool IsHit() const { return hit_; }
+
+  bool SetHit();
+
+  [[nodiscard]] Rectangle GetProtonBounds() const { return proton_bounds_; }
 
   private:
   Texture proton_texture_{};
@@ -32,7 +38,7 @@ class ProtonGraphics {
 
   float scale_{};
 
-  bool fired_{};
+  bool fired_{}; // needed?
 
   bool hit_{};
 

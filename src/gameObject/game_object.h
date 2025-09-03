@@ -7,13 +7,16 @@
 #define RAFLIB_GAME_OBJECT_H_
 
 
-//#include "graphics_component.h"
+// #include "graphics_component.h"
+#include <memory>
+
 #include "../graphics/hero_graphics_component.h"
 #include "../input/movement_handler.h"
+#include "../input/hero_shoot.h"
 
 class GameObject {
 public:
-  GameObject(GraphicsComponent *, InputHandler *);
+  GameObject(GraphicsComponent *, InputHandler *, std::shared_ptr<HeroShoot>);
 
   ~GameObject();
 
@@ -64,6 +67,8 @@ private:
   GraphicsComponent *p_graphics_{nullptr};
 
   InputHandler *p_input_{nullptr};
+
+  std::shared_ptr<HeroShoot> sp_shoot_{nullptr};
 
   float shared_scale_{};
 
