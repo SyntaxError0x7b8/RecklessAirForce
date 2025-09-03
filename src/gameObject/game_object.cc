@@ -19,10 +19,12 @@ GameObject::GameObject(GraphicsComponent *pgraphics, InputHandler *pinput) :
     p_input_(pinput) {
   const auto kwin_w = static_cast<float>(GetScreenWidth());
   const auto kwin_h = static_cast<float>(GetScreenHeight());
+  shared_scale_ = p_graphics_->GetScale();
   screen_position_ = {
     (kwin_w - 32.0f) / 2.0f,
-    kwin_h - (256.0f * p_graphics_->GetScale())
+    kwin_h - (256.0f * shared_scale_)
   };
+
   // screen & collision rectangle
   rect_ = {screen_position_.x,
     screen_position_.y,

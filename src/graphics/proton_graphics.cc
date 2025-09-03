@@ -22,13 +22,13 @@ ProtonGraphics::~ProtonGraphics() {
   UnloadTexture(proton_texture_);
 }
 
-void ProtonGraphics::Update(GameObject&) {
+void ProtonGraphics::Update() {
   if (IsVisible(proton_bounds_, fired_) && !hit_) {
     proton_position_.y += proton_speed_;
   }
   // outside screen or hit will destroy object: handled in another class
 }
-void ProtonGraphics::Draw(GameObject&) {
+void ProtonGraphics::Draw() {
   //source
   Rectangle proton_source {
     0.0f,

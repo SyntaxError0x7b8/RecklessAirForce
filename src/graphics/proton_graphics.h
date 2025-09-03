@@ -5,19 +5,19 @@
 #ifndef RECKLESSAIRFORCE_PROTON_GRAPHICS_H
 #define RECKLESSAIRFORCE_PROTON_GRAPHICS_H
 
-#include "graphics_component.h"
+#include "raylib.h"
 
-class ProtonGraphics : public GraphicsComponent {
+class ProtonGraphics {
   public:
   ProtonGraphics(const char* texture, float scale, float power, Vector2 pos);
 
-  ~ProtonGraphics() override;
+  ~ProtonGraphics();
 
-  void Update(GameObject&) override;
+  void Update();
 
-  void Draw(GameObject&) override;
+  void Draw();
 
-  bool IsVisible(Rectangle, bool) override;
+  bool IsVisible(Rectangle, bool);
 
   private:
   Texture proton_texture_{};

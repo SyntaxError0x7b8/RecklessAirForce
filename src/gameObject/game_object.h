@@ -13,7 +13,7 @@
 
 class GameObject {
 public:
-  explicit GameObject(GraphicsComponent *, InputHandler *);
+  GameObject(GraphicsComponent *, InputHandler *);
 
   ~GameObject();
 
@@ -31,9 +31,9 @@ public:
 
   void SetVelocity(const Vector2 velocity) { velocity_ = velocity; }
 
-  float GetReactionTime() const { return reaction_time_; }
+  [[nodiscard]] float GetReactionTime() const { return reaction_time_; }
 
-  float GetLastUpdateTime() const { return last_update_time_; }
+  [[nodiscard]] float GetLastUpdateTime() const { return last_update_time_; }
 
   void ResetLastUpdateTime() { last_update_time_ = 0.0f; }
 
@@ -44,6 +44,8 @@ public:
   void UpdateRectangle(float x, float y);
 
   void UpdateRectangle(Vector2 newPosition);
+
+  [[nodiscard]] float GetSharedScale() const { return shared_scale_; }
 
   //Factory method to be implemented
 
@@ -62,6 +64,8 @@ private:
   GraphicsComponent *p_graphics_{nullptr};
 
   InputHandler *p_input_{nullptr};
+
+  float shared_scale_{};
 
 
 };
