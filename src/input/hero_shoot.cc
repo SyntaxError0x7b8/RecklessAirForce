@@ -6,6 +6,7 @@
 
 #include "../gameObject/game_object.h"
 #include "../graphics/proton_graphics.h"
+#include "raymath.h"
 
 std::vector<std::shared_ptr<ProtonGraphics>> HeroShoot::burst_;
 
@@ -18,25 +19,25 @@ HeroShoot::HeroShoot() {
 
 
 void HeroShoot::Update(GameObject &hero) {
-  if (burst_.empty()) { return;}
-
   // create bullet
-  if (IsKeyDown(KEY_SPACE)) {
+  if (IsKeyPressed(KEY_SPACE)) {
     Shoot(hero);
   }
   // remove bullets that have hit something or out of the screen
-  for (auto it = burst_.begin(); it != burst_.end(); ++it) {
-    if (it->get() == nullptr) {
-      it = burst_.erase(it);
-    }
-    // update those visible and not hit, nullify the rest
-    for (auto s_ptr : burst_) {
-      if (s_ptr->IsVisible(s_ptr->GetProtonBounds()) && !s_ptr->IsHit()) {
-        s_ptr->Update();
+  if (!burst_.empty()) {
+    for (auto it = burst_.begin(); it != burst_.end(); ++it) {
+      if (it->get() == nullptr) {
+        it = burst_.erase(it);
       }
-      else {
-        // change to nullpointer so it gets removed
-        s_ptr.reset();
+      // update those visible and not hit, nullify the rest
+      for (auto s_ptr : burst_) {
+        if (s_ptr->IsVisible(s_ptr->GetProtonBounds()) && !s_ptr->IsHit()) {
+          s_ptr->Update();
+        }
+        else {
+          // change to nullpointer so it gets removed
+          s_ptr.reset();
+        }
       }
     }
   }
@@ -51,11 +52,17 @@ void HeroShoot::Draw() {
 }
 
 void HeroShoot::Shoot(GameObject &hero) {
+  bullet_pos_ = {
+    hero.GetRectangle().width / 2,
+    0.0f
+  };
+  bullet_pos_ = Vector2Add(bullet_pos_, hero.GetScreenPosition());
+
   // creates a new bullet and adds it to vector
   auto sp_bullet = std::make_shared<ProtonGraphics>(bullet_file_,
     hero.GetSharedScale(),
     15.0f,
-    hero.GetScreenPosition());
+    bullet_pos_);
   burst_.push_back(sp_bullet);
 
 }

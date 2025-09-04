@@ -70,7 +70,8 @@ private:
 
   InputHandler *p_input_{nullptr};
 
-  HeroShoot *p_shoot_{nullptr};
+  //HeroShoot *p_shoot_{nullptr};
+  std::shared_ptr<HeroShoot> p_shoot_;
 
   float shared_scale_{};
 

@@ -30,6 +30,8 @@ class HeroShoot {
 
   const char * bullet_file_;
 
+  Vector2 bullet_pos_{};
+
 };
 
 #endif  // RECKLESSAIRFORCE_HERO_SHOOT_H

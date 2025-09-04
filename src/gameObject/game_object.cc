@@ -23,7 +23,8 @@ GameObject::GameObject(const float map_scale) {
   };
   p_graphics_ = new HeroGraphicsComponent (map_scale);
   p_input_  = new InputHandler();
-  p_shoot_ = new HeroShoot();
+  //p_shoot_ = new HeroShoot();
+  p_shoot_ = std::make_shared<HeroShoot>();
 
 
 
@@ -43,7 +44,7 @@ GameObject::GameObject(const float map_scale) {
 GameObject::~GameObject() {
   delete p_graphics_;
   delete p_input_; // if enemy, need to delete?
-  delete p_shoot_;
+  //delete p_shoot_;
 }
 
 /**
