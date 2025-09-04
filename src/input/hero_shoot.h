@@ -22,10 +22,9 @@ class HeroShoot {
 
   void Draw();
 
-  std::shared_ptr<ProtonGraphics> Shoot();
+  void Shoot(GameObject &);
 
   private:
-    std::shared_ptr<GameObject> sp_hero_ {};
 
   static std::vector<std::shared_ptr<ProtonGraphics>> burst_;
 

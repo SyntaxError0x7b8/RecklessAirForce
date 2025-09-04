@@ -16,7 +16,9 @@
 
 class GameObject {
 public:
-  GameObject(GraphicsComponent *, InputHandler *, std::shared_ptr<HeroShoot>);
+  //GameObject(GraphicsComponent *, InputHandler *);
+
+  explicit GameObject(float map_scale);
 
   ~GameObject();
 
@@ -68,7 +70,7 @@ private:
 
   InputHandler *p_input_{nullptr};
 
-  std::shared_ptr<HeroShoot> sp_shoot_{nullptr};
+  std::shared_ptr<HeroShoot> sp_shoot_;
 
   float shared_scale_{};
 

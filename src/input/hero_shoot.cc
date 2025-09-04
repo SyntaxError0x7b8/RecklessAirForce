@@ -8,19 +8,18 @@
 
 
 // singleton to be implemented
-HeroShoot::HeroShoot() { // circular: std::shared_ptr<GameObject> hero
-  //sp_hero_ = hero;
-  //hero.reset();
+HeroShoot::HeroShoot() {
   bullet_file = "../assets/heroAircraft/Proton_Large.png";
 }
 
 
 
 void HeroShoot::Update(GameObject &hero) {
-  sp_hero_ = std::make_shared<GameObject>(hero);
+  if (burst_.empty()) { return;}
+
   // create bullet
   if (IsKeyDown(KEY_SPACE)) {
-    Shoot();
+    Shoot(hero);
   }
   // remove bullets that have hit something or out of the screen
   for (auto it = burst_.begin(); it != burst_.end(); ++it) {
@@ -41,19 +40,21 @@ void HeroShoot::Update(GameObject &hero) {
 }
 
 void HeroShoot::Draw() {
-  for (auto s_ptr : burst_) {
-    s_ptr->Draw();
+  if (!burst_.empty()) {
+    for (auto s_ptr : burst_) {
+      s_ptr->Draw();
+    }
   }
 }
 
-std::shared_ptr<ProtonGraphics> HeroShoot::Shoot() {
+std::shared_ptr<ProtonGraphics> HeroShoot::Shoot(GameObject & hero) {
   // creates a new bullet and adds it to vector
   auto sp_bullet = std::make_shared<ProtonGraphics>(bullet_file,
-    sp_hero_->GetSharedScale(),
+    hero->GetSharedScale(),
     15.0f,
-    sp_hero_->GetScreenPosition());
+    hero->GetScreenPosition());
   burst_.push_back(sp_bullet);
-  return sp_bullet;
+
 }
 
 

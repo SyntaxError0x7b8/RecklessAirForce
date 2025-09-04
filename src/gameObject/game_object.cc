@@ -11,16 +11,12 @@
 /**
  * @brief Creates a game object. The type of object depends on the components
  * passed as arguments.
- * @param pgraphics {pointer to GraphicsComponent derived object}
- * @param pinput {handle user input for player controlled objects}
- * @param sp_hero_shoot {std::shared_ptr<HeroShoot> bullets fired}
+ * @param map_scale {float}
  */
-GameObject::GameObject(GraphicsComponent *pgraphics,
-  InputHandler *pinput,
-  std::shared_ptr<HeroShoot> hs) :
-    p_graphics_(pgraphics),
-    p_input_(pinput){
-  sp_shoot_.swap(hs);
+GameObject::GameObject(float map_scale) {
+  p_graphics_ = new HeroGraphicsComponent (map_scale);
+  p_input_  = new InputHandler();
+  sp_shoot_ = std::make_shared<HeroShoot>();
   const auto kwin_w = static_cast<float>(GetScreenWidth());
   const auto kwin_h = static_cast<float>(GetScreenHeight());
   shared_scale_ = p_graphics_->GetScale();
@@ -56,7 +52,7 @@ void GameObject::Update(const float kdeltaTime) {
 
   p_input_->Update(*this, kdeltaTime);
   p_graphics_->Update(*this);
-  sp_shoot_->Update(*this);
+  //sp_shoot_->Update(*this);
 
 }
 
@@ -65,7 +61,7 @@ void GameObject::Update(const float kdeltaTime) {
  */
 void GameObject::Draw() {
   p_graphics_->Draw(*this);
-  sp_shoot_->Draw();
+  //sp_shoot_->Draw();
 }
 
 /**

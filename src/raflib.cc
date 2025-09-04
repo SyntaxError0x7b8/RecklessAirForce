@@ -9,6 +9,7 @@
 #include <iostream>
 
 #include "gameObject/game_object.h"
+
 #include "map/map.h"
 #include "raylib.h"
 #include "raflib.h"
@@ -22,9 +23,8 @@ int raflib() {
     auto map = Map();
 
     // create hero (TODO_LATER: create factory class once complex enough)
-    auto proton = std::make_shared<HeroShoot>();
-    auto hero = GameObject(new HeroGraphicsComponent(map.GetScale()),
-      new InputHandler(), proton);
+  // you have to create one ProtonGraphics because it calls members before it exists???
+    auto hero = GameObject(map.GetScale());
 
 
 
