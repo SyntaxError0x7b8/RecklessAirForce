@@ -9,6 +9,8 @@
 
 class ProtonGraphics {
   public:
+  ProtonGraphics() = default;
+
   ProtonGraphics(const char* texture, float scale, float power, Vector2 pos);
 
   ~ProtonGraphics();

@@ -7,14 +7,14 @@
 #include <memory>
 #include <vector>
 
-#include "../graphics/proton_graphics.h"
+#include "../graphics/hero_graphics_component.h"
 
 class GameObject;
 class ProtonGraphics;
 
 class HeroShoot {
   public:
-  explicit HeroShoot();
+  HeroShoot();
 
   ~HeroShoot() = default;
 
@@ -28,7 +28,7 @@ class HeroShoot {
 
   static std::vector<std::shared_ptr<ProtonGraphics>> burst_;
 
-  static const char * bullet_file;;
+  const char * bullet_file_;
 
 };
 

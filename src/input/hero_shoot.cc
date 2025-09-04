@@ -5,11 +5,14 @@
 #include "hero_shoot.h"
 
 #include "../gameObject/game_object.h"
+#include "../graphics/proton_graphics.h"
 
+std::vector<std::shared_ptr<ProtonGraphics>> HeroShoot::burst_;
 
 // singleton to be implemented
 HeroShoot::HeroShoot() {
-  bullet_file = "../assets/heroAircraft/Proton_Large.png";
+  bullet_file_ = "../assets/heroAircraft/Proton_Large.png";
+
 }
 
 
@@ -47,12 +50,12 @@ void HeroShoot::Draw() {
   }
 }
 
-std::shared_ptr<ProtonGraphics> HeroShoot::Shoot(GameObject & hero) {
+void HeroShoot::Shoot(GameObject &hero) {
   // creates a new bullet and adds it to vector
-  auto sp_bullet = std::make_shared<ProtonGraphics>(bullet_file,
-    hero->GetSharedScale(),
+  auto sp_bullet = std::make_shared<ProtonGraphics>(bullet_file_,
+    hero.GetSharedScale(),
     15.0f,
-    hero->GetScreenPosition());
+    hero.GetScreenPosition());
   burst_.push_back(sp_bullet);
 
 }

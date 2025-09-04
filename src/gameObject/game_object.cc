@@ -13,17 +13,19 @@
  * passed as arguments.
  * @param map_scale {float}
  */
-GameObject::GameObject(float map_scale) {
-  p_graphics_ = new HeroGraphicsComponent (map_scale);
-  p_input_  = new InputHandler();
-  sp_shoot_ = std::make_shared<HeroShoot>();
+GameObject::GameObject(const float map_scale) {
   const auto kwin_w = static_cast<float>(GetScreenWidth());
   const auto kwin_h = static_cast<float>(GetScreenHeight());
-  shared_scale_ = p_graphics_->GetScale();
+  shared_scale_ = map_scale;
   screen_position_ = {
     (kwin_w - 32.0f) / 2.0f,
     kwin_h - (256.0f * shared_scale_)
   };
+  p_graphics_ = new HeroGraphicsComponent (map_scale);
+  p_input_  = new InputHandler();
+  p_shoot_ = new HeroShoot();
+
+
 
   // screen & collision rectangle
   rect_ = {screen_position_.x,
@@ -41,6 +43,7 @@ GameObject::GameObject(float map_scale) {
 GameObject::~GameObject() {
   delete p_graphics_;
   delete p_input_; // if enemy, need to delete?
+  delete p_shoot_;
 }
 
 /**
@@ -52,7 +55,7 @@ void GameObject::Update(const float kdeltaTime) {
 
   p_input_->Update(*this, kdeltaTime);
   p_graphics_->Update(*this);
-  //sp_shoot_->Update(*this);
+  p_shoot_->Update(*this);
 
 }
 
@@ -61,7 +64,7 @@ void GameObject::Update(const float kdeltaTime) {
  */
 void GameObject::Draw() {
   p_graphics_->Draw(*this);
-  //sp_shoot_->Draw();
+  p_shoot_->Draw();
 }
 
 /**
