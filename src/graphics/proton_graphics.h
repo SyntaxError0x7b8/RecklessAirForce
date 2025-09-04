@@ -32,7 +32,11 @@ class ProtonGraphics {
 
   Vector2 proton_position_{};
 
-  float proton_speed_{-1.7f};
+  float proton_speed_{-12.0f};
+
+  const float update_rate_ {0.12f};
+
+  float last_update_time_ {0.0};
 
   Rectangle proton_bounds_{};
 

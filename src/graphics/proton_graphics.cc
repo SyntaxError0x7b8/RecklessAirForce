@@ -24,8 +24,15 @@ ProtonGraphics::~ProtonGraphics() {
 
 void ProtonGraphics::Update() {
   // function called only if visible and not hit
-  proton_position_.y += proton_speed_;
-  proton_bounds_.y += proton_speed_;
+  if (last_update_time_ >= update_rate_) {
+    proton_position_.y += proton_speed_;
+    proton_bounds_.y += proton_speed_;
+    last_update_time_ = 0.0f;
+  }
+  else {
+    last_update_time_ += GetFrameTime();
+  }
+
 
   // trying the use of smart pointers to avoid memory leaks
 }

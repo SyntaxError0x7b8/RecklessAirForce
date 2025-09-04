@@ -14,7 +14,7 @@ class ProtonGraphics;
 
 class HeroShoot {
   public:
-  HeroShoot();
+  HeroShoot() = default;
 
   ~HeroShoot() = default;
 
