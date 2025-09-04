@@ -9,10 +9,11 @@
 #include "raymath.h"
 
 std::vector<std::shared_ptr<ProtonGraphics>> HeroShoot::burst_;
+const char *HeroShoot::bullet_file_ = "../assets/heroAircraft/Proton_Large.png";
 
 // singleton to be implemented
 HeroShoot::HeroShoot() {
-  bullet_file_ = "../assets/heroAircraft/Proton_Large.png";
+  //bullet_file_ = "../assets/heroAircraft/Proton_Large.png";
 
 }
 

@@ -28,7 +28,7 @@ class HeroShoot {
 
   static std::vector<std::shared_ptr<ProtonGraphics>> burst_;
 
-  const char * bullet_file_;
+  static const char * bullet_file_;
 
   Vector2 bullet_pos_{};
 
