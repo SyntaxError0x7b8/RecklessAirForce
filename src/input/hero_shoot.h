@@ -16,7 +16,7 @@ class HeroShoot {
   public:
   HeroShoot() = default;
 
-  ~HeroShoot() = default;
+  ~HeroShoot() =default;
 
   void Update(GameObject &);
 
@@ -28,7 +28,7 @@ class HeroShoot {
 
   static std::vector<std::shared_ptr<ProtonGraphics>> burst_;
 
-  static const char * bullet_file_;
+  //static const char * bullet_file_;
 
   Vector2 bullet_pos_{};
 

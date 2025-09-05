@@ -5,13 +5,15 @@
 #ifndef RECKLESSAIRFORCE_PROTON_GRAPHICS_H
 #define RECKLESSAIRFORCE_PROTON_GRAPHICS_H
 
+#include <memory>
+
 #include "raylib.h"
 
 class ProtonGraphics {
   public:
   ProtonGraphics() = default;
 
-  ProtonGraphics(const char* texture, float scale, float power, Vector2 pos);
+  ProtonGraphics(float scale, float power, Vector2 pos);
 
   ~ProtonGraphics();
 
@@ -28,6 +30,8 @@ class ProtonGraphics {
   [[nodiscard]] Rectangle GetProtonBounds() const { return proton_bounds_; }
 
   private:
+  const char * proton_texture_file_{"../assets/heroAircraft/Proton_Large.png"};
+
   Texture proton_texture_{};
 
   Vector2 proton_position_{};

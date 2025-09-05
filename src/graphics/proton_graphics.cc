@@ -3,12 +3,15 @@
 //
 
 #include "proton_graphics.h"
-ProtonGraphics::ProtonGraphics(const char* texture, const float scale,
+
+
+
+ProtonGraphics::ProtonGraphics(const float scale,
                                const float power, const Vector2 pos) :
-    proton_texture_(LoadTexture(texture)),
     proton_position_(pos),
     power_(power),
     scale_(scale) {
+  proton_texture_ = LoadTexture(proton_texture_file_);
   proton_bounds_ = {
     proton_position_.x,
     proton_position_.y,
@@ -18,6 +21,8 @@ ProtonGraphics::ProtonGraphics(const char* texture, const float scale,
   fired_ = true;
 
 }
+
+
 ProtonGraphics::~ProtonGraphics() {
   UnloadTexture(proton_texture_);
 }

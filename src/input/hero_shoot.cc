@@ -9,7 +9,7 @@
 #include "raymath.h"
 
 std::vector<std::shared_ptr<ProtonGraphics>> HeroShoot::burst_;
-const char *HeroShoot::bullet_file_ = "../assets/heroAircraft/Proton_Large.png";
+//const char *HeroShoot::bullet_file_ = "../assets/heroAircraft/Proton_Large.png";
 
 
 void HeroShoot::Update(GameObject &hero) {
@@ -53,7 +53,7 @@ void HeroShoot::Shoot(GameObject &hero) {
   bullet_pos_ = Vector2Add(bullet_pos_, hero.GetScreenPosition());
 
   // creates a new bullet and adds it to vector
-  auto sp_bullet = std::make_shared<ProtonGraphics>(bullet_file_,
+  auto sp_bullet = std::make_shared<ProtonGraphics>(
     hero.GetSharedScale(),
     15.0f,
     bullet_pos_);
