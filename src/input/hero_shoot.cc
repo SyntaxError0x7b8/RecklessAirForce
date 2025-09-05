@@ -12,7 +12,7 @@ std::vector<std::shared_ptr<ProtonGraphics>> HeroShoot::burst_;
 //const char *HeroShoot::bullet_file_ = "../assets/heroAircraft/Proton_Large.png";
 
 
-void HeroShoot::Update(GameObject &hero) {
+void HeroShoot::Update(const GameObject &hero) {
   // create bullet
   if (IsKeyPressed(KEY_SPACE)) {
     Shoot(hero);
@@ -20,7 +20,7 @@ void HeroShoot::Update(GameObject &hero) {
   // remove bullets that have hit something or out of the screen
   if (!burst_.empty()) {
     for (auto it = burst_.begin(); it != burst_.end(); ++it) {
-      if (it->get() == nullptr) {
+      if (*it == nullptr) {
         it = burst_.erase(it);
       }
       // update those visible and not hit, nullify the rest
@@ -39,13 +39,13 @@ void HeroShoot::Update(GameObject &hero) {
 
 void HeroShoot::Draw() {
   if (!burst_.empty()) {
-    for (auto s_ptr : burst_) {
+    for (const auto& s_ptr : burst_) {
       s_ptr->Draw();
     }
   }
 }
 
-void HeroShoot::Shoot(GameObject &hero) {
+void HeroShoot::Shoot(const GameObject &hero) {
   bullet_pos_ = {
     hero.GetRectangle().width / 2,
     0.0f
@@ -53,7 +53,7 @@ void HeroShoot::Shoot(GameObject &hero) {
   bullet_pos_ = Vector2Add(bullet_pos_, hero.GetScreenPosition());
 
   // creates a new bullet and adds it to vector
-  auto sp_bullet = std::make_shared<ProtonGraphics>(
+  const auto sp_bullet = std::make_shared<ProtonGraphics>(
     hero.GetSharedScale(),
     15.0f,
     bullet_pos_);

@@ -44,7 +44,7 @@ public:
 
   void UpdateLastUpdateTime(const float dtime) { last_update_time_ += dtime; }
 
-  Rectangle GetRectangle() const { return rect_;}
+  [[nodiscard]] Rectangle GetRectangle() const { return rect_;}
 
   void UpdateRectangle(float x, float y);
 

@@ -18,11 +18,11 @@ class HeroShoot {
 
   ~HeroShoot() =default;
 
-  void Update(GameObject &);
+  void Update(const GameObject &);
 
-  void Draw();
+  static void Draw();
 
-  void Shoot(GameObject &);
+  void Shoot(const GameObject &);
 
   private:
 

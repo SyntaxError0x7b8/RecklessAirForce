@@ -5,7 +5,6 @@
 #ifndef RECKLESSAIRFORCE_PROTON_GRAPHICS_H
 #define RECKLESSAIRFORCE_PROTON_GRAPHICS_H
 
-#include <memory>
 
 #include "raylib.h"
 
@@ -19,9 +18,9 @@ class ProtonGraphics {
 
   void Update();
 
-  void Draw();
+  void Draw() const;
 
-  bool IsVisible(Rectangle);
+  [[nodiscard]] bool IsVisible(Rectangle) const;
 
   [[nodiscard]] bool IsHit() const { return hit_; }
 

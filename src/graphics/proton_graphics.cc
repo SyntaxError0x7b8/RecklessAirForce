@@ -41,16 +41,16 @@ void ProtonGraphics::Update() {
 
   // trying the use of smart pointers to avoid memory leaks
 }
-void ProtonGraphics::Draw() {
-  //source
-  Rectangle proton_source {
+void ProtonGraphics::Draw() const {
+  // source
+  const Rectangle proton_source {
     0.0f,
       0.0f,
       static_cast<float>(proton_texture_.width),
       static_cast<float>(proton_texture_.height)
     };
   // dest on screen
-  Rectangle proton_dest {
+  const Rectangle proton_dest {
     proton_position_.x,
     proton_position_.y,
     static_cast<float>(proton_bounds_.width),
@@ -60,11 +60,11 @@ void ProtonGraphics::Draw() {
   DrawTexturePro(proton_texture_,proton_source, proton_dest, {},0.0f, WHITE);
 }
 
-bool ProtonGraphics::IsVisible(const Rectangle rectangle) {
-  const bool inside = ((rectangle.x >= -proton_texture_.width) &&
-      (rectangle.x < GetScreenWidth()) &&
-      (rectangle.y >= -proton_texture_.height) &&
-      (rectangle.y < GetScreenHeight()));
+bool ProtonGraphics::IsVisible(const Rectangle rectangle) const {
+  const bool inside = ((rectangle.x >= -static_cast<float>(proton_texture_.width)) &&
+      (rectangle.x < static_cast<float>(GetScreenWidth())) &&
+      (rectangle.y >= -static_cast<float>(proton_texture_.height)) &&
+      (rectangle.y < static_cast<float>(GetScreenHeight())));
   return inside;
 }
 
