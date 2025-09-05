@@ -8,10 +8,20 @@
 #include "../graphics/proton_graphics.h"
 #include "raymath.h"
 
+/**
+ * @brief static variables used by all bullets shot.
+ * @var burst_ {std::vector<std::shared_ptr<ProtonGraphics>> , contains all
+ * bullets}
+ */
 std::vector<std::shared_ptr<ProtonGraphics>> HeroShoot::burst_;
-//const char *HeroShoot::bullet_file_ = "../assets/heroAircraft/Proton_Large.png";
 
-
+/**
+ * @brief Factory method that creates a bullet when SPACEBAR was pressed once.
+ * This method creates a bullet by calling member method Shoot. It removes
+ * bullets that are no longer on the screen or have hit a target. This saves
+ * memory.
+ * @param hero {GameObject reference}
+ */
 void HeroShoot::Update(const GameObject &hero) {
   // create bullet
   if (IsKeyPressed(KEY_SPACE)) {
@@ -37,6 +47,9 @@ void HeroShoot::Update(const GameObject &hero) {
   }
 }
 
+/**
+ * @brief render bullets stored in vector burst_ on the screen
+ */
 void HeroShoot::Draw() {
   if (!burst_.empty()) {
     for (const auto& s_ptr : burst_) {
@@ -45,6 +58,10 @@ void HeroShoot::Draw() {
   }
 }
 
+/**
+ * @brief creates a bullet by calling ProtonGraphics constructor.
+ * @param hero {GameObject, needed to get the initial position of the bullet}
+ */
 void HeroShoot::Shoot(const GameObject &hero) {
   bullet_pos_ = {
     hero.GetRectangle().width / 2,
