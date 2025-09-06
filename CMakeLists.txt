@@ -53,6 +53,7 @@ set(HEADER_FILES
         ${CMAKE_CURRENT_LIST_DIR}/src/graphics/hero_graphics_component.h
         ${CMAKE_CURRENT_LIST_DIR}/src/input/movement_handler.h
         ${CMAKE_CURRENT_LIST_DIR}/src/input/hero_shoot.h
+        ${CMAKE_CURRENT_LIST_DIR}/src/target/target.h
         ################################################################
 )
 
@@ -67,6 +68,7 @@ set(SOURCE_FILES
         ${CMAKE_CURRENT_LIST_DIR}/src/graphics/hero_graphics_component.cc
         ${CMAKE_CURRENT_LIST_DIR}/src/input/movement_handler.cc
         ${CMAKE_CURRENT_LIST_DIR}/src/input/hero_shoot.cc
+        ${CMAKE_CURRENT_LIST_DIR}/src/target/target.cc
         #####################################################################
         ${CMAKE_CURRENT_LIST_DIR}/tests/all_tests.cc
 )
