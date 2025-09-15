@@ -5,15 +5,15 @@
  * preference of composition over inheritance. It will also serve the purpose
  * of practicing automatic documentation generation and automatic testing.
  */
+#include "raflib.h"
+
 #include <cassert>
 #include <iostream>
 
 #include "gameObject/game_object.h"
-
 #include "map/map.h"
 #include "raylib.h"
-#include "raflib.h"
-
+#include "target/target.h"
 
 int raflib() {
 
@@ -25,6 +25,9 @@ int raflib() {
     // create hero (TODO_LATER: create factory class once complex enough)
   // you have to create one ProtonGraphics because it calls members before it exists???
     auto hero = GameObject(map.GetScale());
+
+  // create a practicetarget for testing
+  auto target = Target(map.GetScale());
 
 
 
@@ -44,6 +47,7 @@ int raflib() {
         //=========================================
         map.ScrollMap(kdT);
         hero.Update(kdT);
+        target.Update();
 
 
 
@@ -59,6 +63,9 @@ int raflib() {
 
         // draw the hero
         hero.Draw(); // fix shadow as it shows in {0,0} and not scaled down
+
+        // draw target
+        target.Draw();
 
 
 

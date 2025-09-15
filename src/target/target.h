@@ -23,6 +23,12 @@ public:
 
   Texture target_texture_{};
 
+  double energy_ {100.0};
+
+  bool hit_ {};
+
+  float scale_{};
+
 
 };
 
