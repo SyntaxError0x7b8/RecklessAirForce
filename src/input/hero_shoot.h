@@ -24,6 +24,8 @@ class HeroShoot {
 
   void Shoot(const GameObject &);
 
+
+
   private:
 
   static std::vector<std::shared_ptr<ProtonGraphics>> burst_;

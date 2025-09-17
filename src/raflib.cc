@@ -10,7 +10,9 @@
 #include <cassert>
 #include <iostream>
 
+#include "collision/collisions.h"
 #include "gameObject/game_object.h"
+#include "graphics/proton_graphics.h"
 #include "map/map.h"
 #include "raylib.h"
 #include "target/target.h"
@@ -23,11 +25,14 @@ int raflib() {
     auto map = Map();
 
     // create hero (TODO_LATER: create factory class once complex enough)
-  // you have to create one ProtonGraphics because it calls members before it exists???
+    // you have to create one ProtonGraphics because it calls members before it exists???
     auto hero = GameObject(map.GetScale());
 
-  // create a practicetarget for testing
-  auto target = Target(map.GetScale());
+    // create a practicetarget for testing
+    auto target = Target(map.GetScale());
+
+    // try collision
+
 
 
 

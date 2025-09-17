@@ -2,21 +2,34 @@
 // Created by qos on 9/16/25.
 //
 
-#include <vector>
 
-#include "raylib.h"
 
 #ifndef RECKLESSAIRFORCE_COLLISIONS_H
 #define RECKLESSAIRFORCE_COLLISIONS_H
 
+#include <memory>
+#include <vector>
+
+#include "raylib.h"
+
+class Target;
+class GameObject;
+class ProtonGraphics;
+
 class Collisions {
   private:
+  int num_hits_{};
 
 
 public:
-  Collisions() = default;
+  bool IsHeroHit(const GameObject& hero) {return false;}
+
+  bool IsTargetHit(const Target& target);
+
+  //bool IsEnemyHit(const Enemy& enemy){return false;}
 
 
 };
+
 
 #endif  // RECKLESSAIRFORCE_COLLISIONS_H
