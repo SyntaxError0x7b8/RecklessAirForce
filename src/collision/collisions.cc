@@ -16,6 +16,8 @@ bool Collisions::IsTargetHit(Target& target) {
     if (scored) {
       bullet->SetHit(scored);
       target.SetHit(scored);
+      // receive damage from bullet and reduce it from target
+      //
     }
   }
 
