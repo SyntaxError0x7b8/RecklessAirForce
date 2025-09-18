@@ -24,7 +24,8 @@ class Collisions {
 public:
   bool IsHeroHit(const GameObject& hero) {return false;}
 
-  bool IsTargetHit(const Target& target);
+  bool IsTargetHit(const Target& target,
+    std::vector<std::shared_ptr<ProtonGraphics>>& burst);
 
   //bool IsEnemyHit(const Enemy& enemy){return false;}
 

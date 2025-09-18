@@ -6,8 +6,9 @@
 
 #include "../graphics/proton_graphics.h"
 #include "../input/hero_shoot.h"
-bool Collisions::IsTargetHit(const Target& target, std::shared_ptr<ProtonGraphics> bullet) {
+bool Collisions::IsTargetHit(const Target& target,
+    std::vector<std::shared_ptr<ProtonGraphics>>& burst) {
   //
-  bullet->GetProtonBounds();
+  //bullet->GetProtonBounds();
   return false;
 }
