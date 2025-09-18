@@ -32,6 +32,7 @@ int raflib() {
     auto target = Target(map.GetScale());
 
     // try collision
+    auto collider = Collisions();
 
 
 
@@ -53,6 +54,7 @@ int raflib() {
         map.ScrollMap(kdT);
         hero.Update(kdT);
         target.Update();
+        collider.IsTargetHit(target);
 
 
 
