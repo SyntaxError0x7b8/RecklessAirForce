@@ -16,6 +16,10 @@ public:
 
   void Draw() const;
 
+  [[nodiscard]] Rectangle GetTargetBounds() const { return position_bounds_;}
+
+  bool SetHit(const bool hit) {hit_ = hit; return hit_;}
+
   private:
   Rectangle position_bounds_{};
 

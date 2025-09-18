@@ -24,11 +24,13 @@ class HeroShoot {
 
   void Shoot(const GameObject &);
 
-  static std::vector<std::shared_ptr<ProtonGraphics>> burst_;
+  static std::vector<std::shared_ptr<ProtonGraphics>>* GetBurst() {
+    return &burst_;
+  }
 
   private:
 
-
+  static std::vector<std::shared_ptr<ProtonGraphics>> burst_;
 
   //static const char * bullet_file_;
 

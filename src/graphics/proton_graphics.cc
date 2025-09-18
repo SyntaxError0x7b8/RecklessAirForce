@@ -68,11 +68,6 @@ bool ProtonGraphics::IsVisible(const Rectangle rectangle) const {
   return inside;
 }
 
-bool ProtonGraphics::SetHit() {
-  if (!hit_) { hit_ = true; }
-  return hit_;
-}
-
 
 
 

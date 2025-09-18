@@ -24,7 +24,7 @@ class ProtonGraphics {
 
   [[nodiscard]] bool IsHit() const { return hit_; }
 
-  bool SetHit();
+  bool SetHit(const bool hit) { hit_ = hit; return hit_;}
 
   [[nodiscard]] Rectangle GetProtonBounds() const { return proton_bounds_; }
 

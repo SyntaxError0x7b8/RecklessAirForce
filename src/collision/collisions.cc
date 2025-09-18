@@ -6,9 +6,20 @@
 
 #include "../graphics/proton_graphics.h"
 #include "../input/hero_shoot.h"
-bool Collisions::IsTargetHit(const Target& target,
-    std::vector<std::shared_ptr<ProtonGraphics>>& burst) {
+#include "../target/target.h"
+bool Collisions::IsTargetHit(Target& target) {
   //
-  //bullet->GetProtonBounds();
-  return false;
+  bool scored{};
+  std::vector<std::shared_ptr<ProtonGraphics>>* p_bullets = HeroShoot::GetBurst();
+  for (auto bullet : *p_bullets) {
+    scored = CheckCollisionRecs(bullet->GetProtonBounds(),target.GetTargetBounds());
+    if (scored) {
+      bullet->SetHit(scored);
+      target.SetHit(scored);
+    }
+  }
+
+  p_bullets = nullptr;
+  delete p_bullets;
+  return scored;
 }
