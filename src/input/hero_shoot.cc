@@ -30,8 +30,8 @@ void HeroShoot::Update(const GameObject &hero) {
     Shoot(hero);
   }
   // remove bullets that have hit something or out of the screen
+  CleanupHeroShoots();
   if (!burst_.empty()) {
-      CleanupHeroShoots();
       // update those visible and not hit
       for (const auto& s_ptr : burst_) {
         if (s_ptr &&
@@ -78,7 +78,7 @@ void HeroShoot::CleanupHeroShoots() {
   if (!burst_.empty()) {
     burst_.erase(std::remove_if(burst_.begin(),
       burst_.end(),
-      [](auto& s_ptr) { return s_ptr->IsHit(); }));
+      [](auto& s_ptr) { return s_ptr->IsHit(); }), burst_.end());
   }
 }
 

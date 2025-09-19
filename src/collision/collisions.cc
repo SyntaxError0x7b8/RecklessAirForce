@@ -9,18 +9,16 @@
 #include "../target/target.h"
 bool Collisions::IsTargetHit(Target& target) {
   //
-  bool scored{};
   std::vector<std::shared_ptr<ProtonGraphics>>* p_bullets = HeroShoot::GetBurst();
   for (const auto& bullet : *p_bullets) {
-    scored = CheckCollisionRecs(bullet->GetProtonBounds(),target.GetTargetBounds());
-    if (scored) {
-      bullet->SetHit(scored);
-      target.SetHit(scored);
+    if (CheckCollisionRecs(bullet->GetProtonBounds(),target.GetTargetBounds())) {
+      bullet->SetHit(true);
+      target.SetHit(true);
       // receive damage from bullet and reduce it from target
       //
+      return true;
     }
   }
 
-  p_bullets = nullptr;
-  return scored;
+  return false;
 }
