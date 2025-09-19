@@ -76,9 +76,16 @@ void HeroShoot::Shoot(const GameObject &hero) {
 
 void HeroShoot::CleanupHeroShoots() {
   if (!burst_.empty()) {
+    // remove proton-bullet if hit target
     burst_.erase(std::remove_if(burst_.begin(),
       burst_.end(),
       [](auto& s_ptr) { return s_ptr->IsHit(); }), burst_.end());
+
+    // remove proton-bullet if not visible
+    burst_.erase(std::remove_if(burst_.begin(),
+  burst_.end(),
+  [](auto& s_ptr) { return !(s_ptr->IsVisible(s_ptr->GetProtonBounds()));; }), burst_.end());
+
   }
 }
 
