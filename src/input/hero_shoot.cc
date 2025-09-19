@@ -4,6 +4,8 @@
 //#include <memory>
 #include "hero_shoot.h"
 
+#include <algorithm>
+
 #include "../gameObject/game_object.h"
 #include "../graphics/proton_graphics.h"
 #include "raymath.h"
@@ -74,13 +76,9 @@ void HeroShoot::Shoot(const GameObject &hero) {
 
 void HeroShoot::CleanupHeroShoots() {
   if (!burst_.empty()) {
-    for (auto it = burst_.begin(); it != burst_.end(); ++it) {
-      if (*it == nullptr ||
-        (*it)->IsHit() ||
-        !((*it)->IsVisible((*it)->GetProtonBounds()))) {
-          it = burst_.erase(it);
-      }
-    }
+    burst_.erase(std::remove_if(burst_.begin(),
+      burst_.end(),
+      [](auto& s_ptr) { return s_ptr->IsHit(); }));
   }
 }
 
