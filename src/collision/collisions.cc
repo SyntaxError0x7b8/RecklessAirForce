@@ -11,7 +11,7 @@ bool Collisions::IsTargetHit(Target& target) {
   //
   bool scored{};
   std::vector<std::shared_ptr<ProtonGraphics>>* p_bullets = HeroShoot::GetBurst();
-  for (auto bullet : *p_bullets) {
+  for (const auto& bullet : *p_bullets) {
     scored = CheckCollisionRecs(bullet->GetProtonBounds(),target.GetTargetBounds());
     if (scored) {
       bullet->SetHit(scored);
@@ -22,6 +22,5 @@ bool Collisions::IsTargetHit(Target& target) {
   }
 
   p_bullets = nullptr;
-  delete p_bullets;
   return scored;
 }
