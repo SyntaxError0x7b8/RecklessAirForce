@@ -28,6 +28,8 @@ class HeroShoot {
     return &burst_;
   }
 
+  void CleanupHeroShoots();
+
   private:
 
   static std::vector<std::shared_ptr<ProtonGraphics>> burst_;

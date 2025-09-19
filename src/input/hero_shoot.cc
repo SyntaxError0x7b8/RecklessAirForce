@@ -29,21 +29,15 @@ void HeroShoot::Update(const GameObject &hero) {
   }
   // remove bullets that have hit something or out of the screen
   if (!burst_.empty()) {
-    for (auto it = burst_.begin(); it != burst_.end(); ++it) {
-      if (*it == nullptr) {
-        it = burst_.erase(it);
-      }
+      CleanupHeroShoots();
       // update those visible and not hit, nullify the rest
-      for (auto s_ptr : burst_) {
-        if (s_ptr->IsVisible(s_ptr->GetProtonBounds()) && !s_ptr->IsHit()) {
-          s_ptr->Update();
+      for (const auto& s_ptr : burst_) {
+        if (s_ptr &&
+          s_ptr->IsVisible(s_ptr->GetProtonBounds()) &&
+          !(s_ptr->IsHit())) {
+            s_ptr->Update();
         }
-        else {
-          // change to nullpointer so it gets removed
-          s_ptr.reset();
-        }
-      }
-    }
+       }
   }
 }
 
@@ -53,7 +47,7 @@ void HeroShoot::Update(const GameObject &hero) {
 void HeroShoot::Draw() {
   if (!burst_.empty()) {
     for (const auto& s_ptr : burst_) {
-      s_ptr->Draw();
+      if (s_ptr && !(s_ptr->IsHit())) {s_ptr->Draw();}
     }
   }
 }
@@ -76,6 +70,21 @@ void HeroShoot::Shoot(const GameObject &hero) {
     bullet_pos_);
   burst_.push_back(sp_bullet);
 
+}
+
+void HeroShoot::CleanupHeroShoots() {
+  if (!burst_.empty()) {
+    // move this code to a Clean()func and call it again at the end
+    for (auto it = burst_.begin(); it != burst_.end(); ++it) {
+      if (*it == nullptr ||
+        (*it)->IsHit() ||
+        !((*it)->IsVisible((*it)->GetProtonBounds()))) {
+        // only eliminates the pointer and not the object pointed to,
+        // but it is a nullptr, so no object to remove (and smart pointer)
+        it = burst_.erase(it);
+      }
+    } // closed for loop
+  }
 }
 
 
