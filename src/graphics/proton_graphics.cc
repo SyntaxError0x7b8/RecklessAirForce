@@ -18,7 +18,7 @@ ProtonGraphics::ProtonGraphics(const float scale,
     static_cast<float>(proton_texture_.width) - 3.0f,
     static_cast<float>(proton_texture_.height) - 3.0f
   };
-  fired_ = true;
+  //fired_ = true;
 
 }
 

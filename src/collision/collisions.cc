@@ -7,15 +7,22 @@
 #include "../graphics/proton_graphics.h"
 #include "../input/hero_shoot.h"
 #include "../target/target.h"
+
+/**
+ * @brief  checks collision between hero's proton-bullets and
+ * test target. Function can be overloaded to accept enemies.
+ * @param target
+ * @return true if collision occurs
+ */
 bool Collisions::IsTargetHit(Target& target) {
   //
   std::vector<std::shared_ptr<ProtonGraphics>>* p_bullets = HeroShoot::GetBurst();
   for (const auto& bullet : *p_bullets) {
     if (CheckCollisionRecs(bullet->GetProtonBounds(),target.GetTargetBounds())) {
-      bullet->SetHit(true);
-      target.SetHit(true);
       // receive damage from bullet and reduce it from target
-      //
+      target.TakeDamage(bullet->GetPower());
+      bullet->SetHit(true);
+      //target.SetHit(true);
       return true;
     }
   }

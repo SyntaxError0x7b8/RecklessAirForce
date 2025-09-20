@@ -65,7 +65,7 @@ void HeroShoot::Shoot(const GameObject &hero) {
   };
   bullet_pos_ = Vector2Add(bullet_pos_, hero.GetScreenPosition());
 
-  // creates a new bullet and adds it to vector
+  // creates a new bullet and adds it to vector of shared smart pointers
   const auto sp_bullet = std::make_shared<ProtonGraphics>(
     hero.GetSharedScale(),
     15.0f,
@@ -79,12 +79,14 @@ void HeroShoot::CleanupHeroShoots() {
     // remove proton-bullet if hit target
     burst_.erase(std::remove_if(burst_.begin(),
       burst_.end(),
-      [](auto& s_ptr) { return s_ptr->IsHit(); }), burst_.end());
+      [](auto& s_ptr) { return s_ptr->IsHit(); }),
+      burst_.end());
 
     // remove proton-bullet if not visible
     burst_.erase(std::remove_if(burst_.begin(),
   burst_.end(),
-  [](auto& s_ptr) { return !(s_ptr->IsVisible(s_ptr->GetProtonBounds()));; }), burst_.end());
+  [](auto& s_ptr) { return !(s_ptr->IsVisible(s_ptr->GetProtonBounds()));; }),
+  burst_.end());
 
   }
 }

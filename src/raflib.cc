@@ -54,7 +54,7 @@ int raflib() {
         map.ScrollMap(kdT);
         hero.Update(kdT);
         target.Update();
-        collider.IsTargetHit(target);
+        if (target.GetEnergy() > 0.0f) {collider.IsTargetHit(target);}
 
 
 

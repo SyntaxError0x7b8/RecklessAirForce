@@ -28,6 +28,8 @@ class ProtonGraphics {
 
   [[nodiscard]] Rectangle GetProtonBounds() const { return proton_bounds_; }
 
+  [[nodiscard]] float GetPower() const { return power_;}
+
   private:
   const char * proton_texture_file_{"../assets/heroAircraft/Proton_Large.png"};
 
@@ -47,7 +49,7 @@ class ProtonGraphics {
 
   float scale_{};
 
-  bool fired_{}; // needed?
+  //bool fired_{}; // needed?
 
   bool hit_{};
 

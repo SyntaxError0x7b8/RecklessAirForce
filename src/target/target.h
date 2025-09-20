@@ -6,6 +6,8 @@
 #define RECKLESSAIRFORCE_TARGET_H
 #include "raylib.h"
 
+#define ENERGY 50.0f
+
 class Target {
 public:
   explicit Target(float scale);
@@ -18,7 +20,13 @@ public:
 
   [[nodiscard]] Rectangle GetTargetBounds() const { return position_bounds_;}
 
-  bool SetHit(const bool hit) {hit_ = hit; return hit_;}
+  //bool SetHit(const bool hit) {hit_ = hit; return hit_;}
+
+  void RestoreTarget();
+
+  float TakeDamage(float damage = 0.0f);
+
+  [[nodiscard]] float GetEnergy() const { return energy_; }
 
   private:
   Rectangle position_bounds_{};
@@ -27,9 +35,9 @@ public:
 
   Texture target_texture_{};
 
-  double energy_ {100.0};
+  float energy_ {ENERGY};
 
-  bool hit_ {};
+  //bool hit_ {};
 
   float scale_{};
 
