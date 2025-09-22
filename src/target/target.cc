@@ -29,14 +29,13 @@ Target::Target(const float scale) {
  void Target::Update() {
    if (energy_ <= 0.0 && !burning_) {
      // allow to restore target
-     // place here guard for explosion
      RestoreTarget();
    }
-   else if (energy_ <= 0.0 && burning_) {
+   else if (energy_ <= 0.0 && burning_) { // target still burning
      burning_ = target_blast_->UpdateBlast();
    }
    else {
-     burning_ = false;
+     burning_ = false; // target with positive energy does not burn
    }
 
  }
