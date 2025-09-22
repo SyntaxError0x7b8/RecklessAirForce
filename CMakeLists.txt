@@ -72,7 +72,7 @@ set(SOURCE_FILES
         ${CMAKE_CURRENT_LIST_DIR}/src/input/hero_shoot.cc
         ${CMAKE_CURRENT_LIST_DIR}/src/target/target.cc
         ${CMAKE_CURRENT_LIST_DIR}/src/collision/collisions.cc
-        ${CMAKE_CURRENT_LIST_DIR}/src/collision/explosion.h
+        ${CMAKE_CURRENT_LIST_DIR}/src/collision/explosion.cc
         #####################################################################
         ${CMAKE_CURRENT_LIST_DIR}/tests/all_tests.cc
 )

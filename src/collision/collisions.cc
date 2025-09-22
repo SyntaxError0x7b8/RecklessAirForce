@@ -9,12 +9,9 @@
 #include "../target/target.h"
 
  Collisions::Collisions() {
-   fire_ = new Explosion;
+   fire_ = std::make_shared<Explosion>();
  }
 
- Collisions::~Collisions() {
-   delete fire_;
- }
 
 
 

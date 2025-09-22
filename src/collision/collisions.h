@@ -7,11 +7,9 @@
 #ifndef RECKLESSAIRFORCE_COLLISIONS_H
 #define RECKLESSAIRFORCE_COLLISIONS_H
 
-
-
+#include <memory>
 
 #include "explosion.h"
-
 
 //class Explosion;
 class Target;
@@ -22,13 +20,13 @@ class Collisions {
   private:
   int num_hits_{};
 
-  Explosion *fire_ = nullptr;
+  std::shared_ptr<Explosion> fire_ = nullptr;
 
 
 public:
   Collisions();
 
-  ~Collisions();
+  ~Collisions() = default;
 
   bool IsHeroHit(const GameObject& hero) {return false;}
 
