@@ -8,12 +8,6 @@
 #include "../input/hero_shoot.h"
 #include "../target/target.h"
 
- Collisions::Collisions() {
-   fire_ = std::make_shared<Explosion>();
- }
-
-
-
 
 
 
@@ -24,21 +18,22 @@
  * @return true if collision occurs
  */
 bool Collisions::IsTargetHit(Target& target) {
-  //
+  // get a pointer to all hero's proton-bullets
   std::vector<std::shared_ptr<ProtonGraphics>>* p_bullets = HeroShoot::GetBurst();
+  // check collision with target for every proton-bullet
   for (const auto& bullet : *p_bullets) {
     if (target.IsBurning()) { // if target burning, execute burning
-      // call explosion burning function
+      // call burning function
     }
     else {
-          if (CheckCollisionRecs(bullet->GetProtonBounds(),target.GetTargetBounds())) {
-      // receive damage from bullet and reduce it from target
-      target.TakeDamage(bullet->GetPower());
-      bullet->SetHit(true);
-      //set target to burning
-      target.SetBurning(true);
-      return true;
-    }
+      if (CheckCollisionRecs(bullet->GetProtonBounds(),target.GetTargetBounds())) {
+        // receive damage from bullet and reduce it from target
+        target.TakeDamage(bullet->GetPower());
+        bullet->SetHit(true);
+        //set target to burning
+        target.SetBurning(true);
+        return true;
+      }
     }
 
   }

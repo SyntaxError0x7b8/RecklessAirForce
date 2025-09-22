@@ -11,27 +11,30 @@ class Explosion {
   public:
   Explosion();
 
+  //call for other explosion visuals
   Explosion(const char* file_expl, int num_frames);
 
   ~Explosion();
 
-  bool DrawBlast();
+  bool UpdateBlast();
+
+  void DrawBlast();
 
 
 private:
   void ResetTime() { accumulated_time_ = 0.f; }
 
-  int max_frames_ {9};
+  int max_frames_{9};
 
   const char *texture_file_{"../assets/other/explosion.png"};
 
-  Texture blast_texture_;
+  Texture blast_texture_{};
 
   float explosion_frame_rate_ {100.0f}; // milliseconds
 
   float accumulated_time_ {};
 
-  int frame_ {};
+  int frame_{};
 };
 
 

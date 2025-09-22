@@ -31,8 +31,6 @@ int raflib() {
     // create a practicetarget for testing
     auto target = Target(map.GetScale());
 
-    // try collision
-    auto collider = Collisions();
 
 
 
@@ -54,7 +52,7 @@ int raflib() {
         map.ScrollMap(kdT);
         hero.Update(kdT);
         target.Update();
-        if (target.GetEnergy() > 0.0f) {collider.IsTargetHit(target);}
+        if (target.GetEnergy() > 0.0f) {Collisions::IsTargetHit(target);}
 
 
 

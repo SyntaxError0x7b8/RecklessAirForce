@@ -4,6 +4,9 @@
 
 #ifndef RECKLESSAIRFORCE_TARGET_H
 #define RECKLESSAIRFORCE_TARGET_H
+#include <memory>
+
+#include "../collision/explosion.h"
 #include "raylib.h"
 
 #define ENERGY 50.0f
@@ -33,6 +36,8 @@ public:
   void SetBurning(const bool burn) { burning_ = burn; }
 
   private:
+  std::shared_ptr<Explosion> target_blast_ = nullptr;
+
   Rectangle position_bounds_{};
 
   Vector2 position_{};

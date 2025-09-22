@@ -5,7 +5,7 @@
 #include "explosion.h"
 
 
- Explosion::Explosion() {
+Explosion::Explosion() {
    blast_texture_ = LoadTexture(texture_file_);
  }
 
@@ -18,18 +18,29 @@ Explosion::Explosion(const char* file_expl, const int num_frames) {
  Explosion::~Explosion() {
    UnloadTexture(blast_texture_);
  }
- bool Explosion::DrawBlast() {
-   if (frame_ > 9) {
-     frame_ = 0;
-     return false;
-   }
-   else {
-     // draw explosion frame and frame++
-     //
 
-     return true;
-   }
+
+
+ void Explosion::DrawBlast() {
+
  }
+
+bool Explosion::UpdateBlast() {
+  if (frame_ > max_frames_) {
+    frame_ = 0;
+    return false;
+  }
+  const float dt = GetFrameTime();
+  if (accumulated_time_ >= explosion_frame_rate_) {
+    frame_++;
+    accumulated_time_ = 0.f;
+    return true;
+  }
+  accumulated_time_ += dt;
+  return true;
+
+ }
+
 
 
 

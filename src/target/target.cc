@@ -18,6 +18,7 @@ Target::Target(const float scale) {
      static_cast<float>(target_texture_.width) * scale_,
      static_cast<float>(target_texture_.height) * scale_
    };
+  target_blast_ = std::make_shared<Explosion>();
  }
 
  Target::~Target() {
@@ -26,11 +27,18 @@ Target::Target(const float scale) {
 
 
  void Target::Update() {
-   if (energy_ <= 0.0) {
+   if (energy_ <= 0.0 && !burning_) {
      // allow to restore target
      // place here guard for explosion
      RestoreTarget();
    }
+   else if (energy_ <= 0.0 && burning_) {
+     burning_ = target_blast_->UpdateBlast();
+   }
+   else {
+     burning_ = false;
+   }
+
  }
 
  /**

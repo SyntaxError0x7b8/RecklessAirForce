@@ -9,7 +9,7 @@
 
 #include <memory>
 
-#include "explosion.h"
+//#include "explosion.h"
 
 //class Explosion;
 class Target;
@@ -18,21 +18,16 @@ class ProtonGraphics;
 
 class Collisions {
   private:
-  int num_hits_{};
 
-  std::shared_ptr<Explosion> fire_ = nullptr;
 
 
 public:
-  Collisions();
 
-  ~Collisions() = default;
+  static bool IsHeroHit(const GameObject& hero) {return false;}
 
-  bool IsHeroHit(const GameObject& hero) {return false;}
+  static bool IsTargetHit(Target& target);
 
-  bool IsTargetHit(Target& target);
 
-  //bool IsEnemyHit(const Enemy& enemy){return false;}
 
 
 
