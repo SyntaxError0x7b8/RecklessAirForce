@@ -5,6 +5,7 @@
 #ifndef RECKLESSAIRFORCE_EXPLOSION_H
 #define RECKLESSAIRFORCE_EXPLOSION_H
 
+#include "raylib.h"
 
 class Explosion {
   public:
@@ -14,15 +15,17 @@ class Explosion {
 
   ~Explosion();
 
-
+  bool DrawBlast();
 
 
 private:
   void ResetTime() { accumulated_time_ = 0.f; }
 
-  int max_frames {9};
+  int max_frames_ {9};
 
   const char *texture_file_{"../assets/other/explosion.png"};
+
+  Texture blast_texture_;
 
   float explosion_frame_rate_ {100.0f}; // milliseconds
 
@@ -30,5 +33,6 @@ private:
 
   int frame_ {};
 };
+
 
 #endif  // RECKLESSAIRFORCE_EXPLOSION_H

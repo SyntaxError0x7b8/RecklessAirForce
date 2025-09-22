@@ -28,6 +28,10 @@ public:
 
   [[nodiscard]] float GetEnergy() const { return energy_; }
 
+  [[nodiscard]] bool IsBurning() const { return burning_; }
+
+  void SetBurning(const bool burn) { burning_ = burn; }
+
   private:
   Rectangle position_bounds_{};
 
@@ -37,7 +41,7 @@ public:
 
   float energy_ {ENERGY};
 
-  //bool hit_ {};
+  bool burning_ {};
 
   float scale_{};
 

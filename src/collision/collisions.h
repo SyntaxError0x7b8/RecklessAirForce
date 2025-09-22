@@ -7,11 +7,13 @@
 #ifndef RECKLESSAIRFORCE_COLLISIONS_H
 #define RECKLESSAIRFORCE_COLLISIONS_H
 
-#include <memory>
-#include <vector>
 
-#include "raylib.h"
 
+
+#include "explosion.h"
+
+
+//class Explosion;
 class Target;
 class GameObject;
 class ProtonGraphics;
@@ -20,13 +22,20 @@ class Collisions {
   private:
   int num_hits_{};
 
+  Explosion *fire_ = nullptr;
+
 
 public:
+  Collisions();
+
+  ~Collisions();
+
   bool IsHeroHit(const GameObject& hero) {return false;}
 
   bool IsTargetHit(Target& target);
 
   //bool IsEnemyHit(const Enemy& enemy){return false;}
+
 
 
 };
