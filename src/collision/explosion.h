@@ -16,13 +16,12 @@ class Explosion {
 
   ~Explosion();
 
-  bool UpdateBlast();
+  void UpdateBlast();
 
-  void DrawBlast(float x, float y);
+  void DrawBlast(float x, float y, float scale) const;
 
 
 private:
-  void ResetTime() { accumulated_time_ = 0.f; }
 
   int max_frames_{9};
 

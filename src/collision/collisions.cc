@@ -22,21 +22,13 @@ bool Collisions::IsTargetHit(Target& target) {
   std::vector<std::shared_ptr<ProtonGraphics>>* p_bullets = HeroShoot::GetBurst();
   // check collision with target for every proton-bullet
   for (const auto& bullet : *p_bullets) {
-    if (target.IsBurning()) { // if target burning, execute burning
-      // call burning function
+    if (CheckCollisionRecs(bullet->GetProtonBounds(),target.GetTargetBounds())) {
+      // receive damage from bullet and reduce it from target
+      target.TakeDamage(bullet->GetPower());
+      bullet->SetHit(true);
+      return true;
     }
-    else {
-      if (CheckCollisionRecs(bullet->GetProtonBounds(),target.GetTargetBounds())) {
-        // receive damage from bullet and reduce it from target
-        target.TakeDamage(bullet->GetPower());
-        bullet->SetHit(true);
-        //set target to burning
-        target.SetBurning(true);
-        return true;
-      }
-    }
-
   }
-
   return false;
+
 }

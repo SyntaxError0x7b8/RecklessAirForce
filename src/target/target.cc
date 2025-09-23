@@ -27,17 +27,11 @@ Target::Target(const float scale) {
 
 
  void Target::Update() {
-   if (energy_ <= 0.0 && !burning_) {
-     // allow to restore target
-     RestoreTarget();
-   }
-   else if (energy_ <= 0.0 && burning_) { // target still burning
-     burning_ = target_blast_->UpdateBlast();
-   }
-   else {
-     burning_ = false; // target with positive energy does not burn
-   }
-
+  burning_ = (energy_ <= 0.0f);
+  if (burning_) {
+    target_blast_->UpdateBlast();
+  }
+  RestoreTarget();
  }
 
  /**
@@ -51,7 +45,13 @@ void Target::Draw() const {
 
    if (energy_ >= 0.0) {
      DrawTexturePro(target_texture_, source_rect,position_bounds_, {}, 0.0f, WHITE);
-     DrawRectangleLinesEx(position_bounds_, 2.0f, RED);
+     //DrawRectangleLinesEx(position_bounds_, 2.0f, RED);
+   }
+   else if (energy_ < 0.0 && burning_) {
+    target_blast_->DrawBlast(position_.x, position_.y, scale_);
+   }
+   else {
+     return; // placeholder for burnt marks for ground targets
    }
  }
 
@@ -59,7 +59,7 @@ void Target::Draw() const {
  * @brief Allows a fresh new target re-using the same Target object.
  */
 void Target::RestoreTarget() {
-   if (IsKeyPressed(KEY_T)) {
+   if (!burning_ && IsKeyPressed(KEY_T)) {
      energy_ = ENERGY;
      //hit_ = false;
    }
