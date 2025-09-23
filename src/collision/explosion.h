@@ -18,7 +18,7 @@ class Explosion {
 
   bool UpdateBlast();
 
-  void DrawBlast();
+  void DrawBlast(float x, float y);
 
 
 private:

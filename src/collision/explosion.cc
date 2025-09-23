@@ -21,7 +21,7 @@ Explosion::Explosion(const char* file_expl, const int num_frames) {
 
 
 
- void Explosion::DrawBlast() {
+ void Explosion::DrawBlast(const float x, const float y) {
 
  }
 
