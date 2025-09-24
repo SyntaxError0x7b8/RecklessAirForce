@@ -7,6 +7,7 @@
 
 #include "raylib.h"
 
+class Target;
 class Explosion {
   public:
   Explosion();
@@ -16,7 +17,7 @@ class Explosion {
 
   ~Explosion();
 
-  void UpdateBlast();
+  bool UpdateBlast();
 
   void DrawBlast(float x, float y, float scale) const;
 

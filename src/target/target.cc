@@ -27,9 +27,8 @@ Target::Target(const float scale) {
 
 
  void Target::Update() {
-  burning_ = (energy_ <= 0.0f);
   if (burning_) {
-    target_blast_->UpdateBlast();
+    burning_ = target_blast_->UpdateBlast();
   }
   RestoreTarget();
  }
@@ -67,6 +66,7 @@ void Target::RestoreTarget() {
 float Target::TakeDamage(const float damage) {
   if (energy_ > 0.0) {
     energy_ -= damage;
+    if (energy_ <= 0.0f) { burning_ = true; }
     return energy_;
   }
   return 0.0f;
