@@ -4,6 +4,8 @@
 
 #include "explosion.h"
 
+#include <iostream>
+
 #include "../target/target.h"
 
 Explosion::Explosion() {

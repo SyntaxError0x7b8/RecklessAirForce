@@ -30,7 +30,7 @@ private:
 
   Texture blast_texture_{};
 
-  float explosion_frame_rate_ {100.0f}; // milliseconds
+  float explosion_frame_rate_ {0.15f}; // milliseconds
 
   float accumulated_time_ {};
 

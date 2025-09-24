@@ -4,6 +4,8 @@
 
 #include "target.h"
 
+#include <iostream>
+
 /**
  * @brief It creates a practice target for code implementation and debugging.
  * @param scale to reflect map's scale
