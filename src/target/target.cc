@@ -27,8 +27,11 @@ Target::Target(const float scale) {
    UnloadTexture(target_texture_);
  }
 
-
- void Target::Update() {
+ /**
+  * @brief it sets the state of burning or not burning to control explosion's
+  * graphics.
+  */
+void Target::Update() {
   if (burning_) {
     burning_ = target_blast_->UpdateBlast();
   }
@@ -36,7 +39,8 @@ Target::Target(const float scale) {
  }
 
  /**
-  * @brief It renders practice target on the screen if its energy is positive.
+  * @brief It renders practice target on the screen if its energy is positive and
+  * calls the explosion draw function after its energy becomes negative.
   */
 void Target::Draw() const {
    const Rectangle source_rect {
@@ -65,6 +69,12 @@ void Target::RestoreTarget() {
      //hit_ = false;
    }
  }
+
+/**
+ * @brief it removes the amount of ener
+ * @param damage float, power of hitting object to be subtracted from *this
+ * @return float, remaining energy value
+ */
 float Target::TakeDamage(const float damage) {
   if (energy_ > 0.0) {
     energy_ -= damage;

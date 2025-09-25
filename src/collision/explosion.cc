@@ -12,6 +12,7 @@ Explosion::Explosion() {
    blast_texture_ = LoadTexture(texture_file_);
  }
 
+// constructor to allow other sprites to be loaded
 Explosion::Explosion(const char* file_expl, const int num_frames) {
    texture_file_ = file_expl;
    max_frames_ = num_frames;
