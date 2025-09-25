@@ -50,6 +50,10 @@ public:
 
   float scale_{};
 
+  Vector2 explosion_offset_ {-34.0f, -43.0f};
+
+  float scale_adjustment_ {1.75f};
+
 
 };
 

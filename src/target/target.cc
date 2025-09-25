@@ -53,7 +53,9 @@ void Target::Draw() const {
      //DrawRectangleLinesEx(position_bounds_, 2.0f, RED);
    }
    else if (energy_ < 0.0 && burning_) {
-    target_blast_->DrawBlast(position_.x, position_.y, scale_);
+    target_blast_->DrawBlast((position_.x + explosion_offset_.x),
+      (position_.y + explosion_offset_.y),
+      (scale_ * scale_adjustment_));
    }
    else {
      return; // placeholder for burnt marks for ground targets

@@ -23,9 +23,15 @@ Explosion::Explosion(const char* file_expl, const int num_frames) {
    UnloadTexture(blast_texture_);
  }
 
-
-
- void Explosion::DrawBlast(const float x, const float y, const float scale) const {
+ /**
+  * @brief renders explosion once after calling object is destroyed.
+  * The explosion must only be drawn once immediately after object's energy
+  * reduces to 0.0 or lower.
+  * @param x float, x-coordinate on the screen
+  * @param y float, y-coordinate on the screen
+  * @param scale float, resize to map's scale or another desired size
+  */
+void Explosion::DrawBlast(const float x, const float y, const float scale) const {
   // ensure function gets called only when necessary to avoid repeated blasts
   const int frame_width = (blast_texture_.width / max_frames_);
 
@@ -36,10 +42,10 @@ Explosion::Explosion(const char* file_expl, const int num_frames) {
     static_cast<float>(blast_texture_.height)
   };
   const Rectangle blast_destination_rect {
-  x - 34.0f, // trial-error adjustment due to image size
-  y - 43.0f, // target and blast are images of different size
-  static_cast<float>(frame_width) * scale * 2.0f,
-  static_cast<float>(blast_texture_.height) * scale * 2.0f // 2.0f trial error factor to check best size
+  x,
+  y,
+  static_cast<float>(frame_width) * scale,
+  static_cast<float>(blast_texture_.height) * scale// 2.0f trial error factor to check best size
   };
   DrawTexturePro(blast_texture_, blast_source_rect,
     blast_destination_rect,
@@ -48,6 +54,11 @@ Explosion::Explosion(const char* file_expl, const int num_frames) {
     WHITE);
  }
 
+ /**
+ * @brief increases the frame after a period of time, and it uses the frame_
+ * to control when an explosion should be drawn.
+ * @return bool, true frame_ >= 0 and < max_frames_
+ */
 bool Explosion::UpdateBlast() {
   if (frame_ >= max_frames_) {
     frame_ = 0;
