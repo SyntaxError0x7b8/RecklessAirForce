@@ -33,9 +33,19 @@ public:
 
   [[nodiscard]] float GetEnergy() const { return energy_; }
 
+  void SetEnergy(const float energy) { energy_ = energy;}
+
   [[nodiscard]] bool IsBurning() const { return burning_; }
 
   void SetBurning(const bool burn) { burning_ = burn; }
+
+  [[nodiscard]] Vector2 GetPosition() const { return position_; };
+
+  void SetPosition(const Vector2 pos) { position_ = pos; }
+
+  void SetExplosionOffset(Vector2 offset) { explosion_offset_ = offset; }
+
+  void SetScaleAdjustment(const float scaleAdj) { scale_adjustment_ = scaleAdj; }
 
   private:
   std::shared_ptr<Explosion> target_blast_ = nullptr;
