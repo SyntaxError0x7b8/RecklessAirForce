@@ -9,11 +9,13 @@
 #include "../collision/explosion.h"
 #include "raylib.h"
 
-#define ENERGY 50.0f
+#define DEFAULT_ENERGY 50.0f
 
 class Target {
 public:
   explicit Target(float scale);
+
+  Target(const char* sprite, Vector2 pos, float scale);
 
   ~Target();
 
@@ -25,7 +27,7 @@ public:
 
   //bool SetHit(const bool hit) {hit_ = hit; return hit_;}
 
-  void RestoreTarget();
+  void RestoreTarget(float energy = DEFAULT_ENERGY);
 
   float TakeDamage(float damage = 0.0f);
 
@@ -44,7 +46,7 @@ public:
 
   Texture target_texture_{};
 
-  float energy_ {ENERGY};
+  float energy_ {DEFAULT_ENERGY};
 
   bool burning_ {};
 

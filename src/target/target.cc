@@ -22,8 +22,20 @@ Target::Target(const float scale) {
    };
   target_blast_ = std::make_shared<Explosion>();
  }
+Target::Target(const char* sprite, Vector2 pos, const float scale) {
+  scale_ = scale;
+  target_texture_ = LoadTexture(sprite);
+  position_ = {static_cast<float>(GetScreenWidth()) / 2.0f, 200.0f};
+  position_bounds_ = {
+    position_.x,
+    position_.y,
+    static_cast<float>(target_texture_.width) * scale_,
+    static_cast<float>(target_texture_.height) * scale_
+  };
+  target_blast_ = std::make_shared<Explosion>();
+}
 
- Target::~Target() {
+Target::~Target() {
    UnloadTexture(target_texture_);
  }
 
@@ -64,10 +76,11 @@ void Target::Draw() const {
 
 /**
  * @brief Allows a fresh new target re-using the same Target object.
+ * @param energy float, restore target to this energy level.
  */
-void Target::RestoreTarget() {
+void Target::RestoreTarget(const float energy) {
    if (!burning_ && IsKeyPressed(KEY_T)) {
-     energy_ = ENERGY;
+     energy_ = energy;
      //hit_ = false;
    }
  }
@@ -80,7 +93,7 @@ void Target::RestoreTarget() {
 float Target::TakeDamage(const float damage) {
   if (energy_ > 0.0) {
     energy_ -= damage;
-    if (energy_ <= 0.0f) { burning_ = true; }
+    if (energy_ <= 0.0f) { SetBurning(true); }
     return energy_;
   }
   return 0.0f;
