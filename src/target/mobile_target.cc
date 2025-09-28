@@ -10,3 +10,4 @@ MobileTarget::MobileTarget(const char* sprite,
     : Target(sprite, pos, scale) {
 
 }
+
