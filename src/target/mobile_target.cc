@@ -10,4 +10,8 @@ MobileTarget::MobileTarget(const char* sprite,
     : Target(sprite, pos, scale) {
 
 }
+void MobileTarget::MoveTarget() {
+  const float dt = GetFrameTime();
+  // move object according to a movement pattern
+}
 
