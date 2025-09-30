@@ -22,10 +22,9 @@ Target::Target(const float scale) {
    };
   target_blast_ = std::make_shared<Explosion>();
  }
-Target::Target(const char* sprite, Vector2 pos, const float scale) {
+Target::Target(const char* sprite, const float scale) {
   scale_ = scale;
   target_texture_ = LoadTexture(sprite);
-  position_ = {static_cast<float>(GetScreenWidth()) / 2.0f, 200.0f};
   position_bounds_ = {
     position_.x,
     position_.y,

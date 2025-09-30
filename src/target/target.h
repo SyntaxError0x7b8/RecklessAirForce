@@ -15,7 +15,7 @@ class Target {
 public:
   explicit Target(float scale);
 
-  Target(const char* sprite, Vector2 pos, float scale);
+  Target(const char* sprite, float scale);
 
   ~Target();
 

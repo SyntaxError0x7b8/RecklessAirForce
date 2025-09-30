@@ -8,15 +8,24 @@
 
 class MobileTarget final : public Target {
   public:
-  MobileTarget(const char* sprite, Vector2 pos, float scale);
+  MobileTarget(const char* sprite, float scale);
 
   ~MobileTarget() = default;
 
   void MoveTarget();
 
+  void TargetLinePath();
+
+  void SetCoordinates();
+
 private:
   Vector2 next_pos_{};
+
   float target_speed_{6.0f}; // pixels per second
+
+  Vector2 dest_pos_{};
+
+  Vector2 direction_{};
 
 
 };
