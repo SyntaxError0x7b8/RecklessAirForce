@@ -60,6 +60,8 @@ public:
 
   Vector2 shadow_offset_{12.0f, 12.0f};
 
+  Vector2 shadow_position_{};
+
   float energy_ {DEFAULT_ENERGY};
 
   bool burning_ {};

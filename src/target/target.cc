@@ -6,6 +6,8 @@
 
 #include <iostream>
 
+#include "raymath.h"
+
 /**
  * @brief It creates a practice target for code implementation and debugging.
  * @param scale to reflect map's scale
@@ -13,6 +15,7 @@
 Target::Target(const float scale) {
    scale_ = scale;
    target_texture_ = LoadTexture("../assets/other/target.png");
+   target_shadow_ = LoadTexture("../assets/other/target_shadow.png");
    position_ = {static_cast<float>(GetScreenWidth()) / 2.0f, 200.0f};
    position_bounds_ = {
      position_.x,
@@ -20,6 +23,7 @@ Target::Target(const float scale) {
      static_cast<float>(target_texture_.width) * scale_,
      static_cast<float>(target_texture_.height) * scale_
    };
+  shadow_position_ = Vector2Add(position_, shadow_offset_);
   target_blast_ = std::make_shared<Explosion>();
  }
 Target::Target(const char* sprite, const float scale) {
@@ -36,6 +40,7 @@ Target::Target(const char* sprite, const float scale) {
 
 Target::~Target() {
    UnloadTexture(target_texture_);
+  UnloadTexture(target_shadow_);
  }
 
  /**
@@ -62,6 +67,7 @@ void Target::Draw() const {
    if (energy_ >= 0.0) {
      DrawTexturePro(target_texture_, source_rect,position_bounds_, {}, 0.0f, WHITE);
      //DrawRectangleLinesEx(position_bounds_, 2.0f, RED);
+     // Draw shadow here <-- <-- <-- <-- <-- <-- <--
    }
    else if (energy_ < 0.0 && burning_) {
     target_blast_->DrawBlast((position_.x + explosion_offset_.x),
@@ -80,7 +86,6 @@ void Target::Draw() const {
 void Target::RestoreTarget(const float energy) {
    if (!burning_ && IsKeyPressed(KEY_T)) {
      energy_ = energy;
-     //hit_ = false;
    }
  }
 
