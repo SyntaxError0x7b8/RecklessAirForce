@@ -56,13 +56,17 @@ public:
 
   Texture target_texture_{};
 
+  Texture target_shadow_{};
+
+  Vector2 shadow_offset_{12.0f, 12.0f};
+
   float energy_ {DEFAULT_ENERGY};
 
   bool burning_ {};
 
   float scale_{};
 
-  Vector2 explosion_offset_ {-34.0f, -43.0f};
+  Vector2 explosion_offset_ {-24.0f, -12.0f};
 
   float scale_adjustment_ {1.75f};
 
