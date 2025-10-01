@@ -27,7 +27,7 @@ void MobileTarget::TargetLinePath(){
   // this path could be changed to other mathematical curves
   const Vector2 next_point = Vector2Add(
     GetPosition(),
-    Vector2Scale(direction_, target_speed_)); // velicity
+    Vector2Scale(direction_, target_speed_)); // velocity
   SetPosition(next_point);
 }
 void MobileTarget::SetCoordinates() {

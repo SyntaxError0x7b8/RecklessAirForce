@@ -9,7 +9,7 @@
 #include "../collision/explosion.h"
 #include "raylib.h"
 
-#define DEFAULT_ENERGY 50.0f
+#define DEFAULT_ENERGY 20.0f
 
 class Target {
 public:
