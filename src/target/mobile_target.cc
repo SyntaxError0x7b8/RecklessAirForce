@@ -64,9 +64,9 @@ void MobileTarget::Draw() {
 
   }
   else if (GetEnergy() < 0.0 && IsBurning()) {
-    //target_blast_->DrawBlast((position_.x + explosion_offset_.x),
-    //  (position_.y + explosion_offset_.y),
-    //  (scale_ * scale_adjustment_));
+    target_blast_->DrawBlast((GetPosition().x + explosion_offset_.x),
+      (GetPosition().y + explosion_offset_.y),
+      (scale_ * scale_adjustment_));
   }
   else {
     return; // placeholder for burnt marks for ground targets

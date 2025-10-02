@@ -53,7 +53,7 @@ public:
 
   private:
 
-  std::shared_ptr<Explosion> target_blast_ = nullptr;
+
 
   Rectangle position_bounds_{};
 
@@ -71,12 +71,16 @@ public:
 
   bool burning_ {};
 
-  float scale_{};
+
+protected:
+
+  std::shared_ptr<Explosion> target_blast_ = nullptr;
 
   Vector2 explosion_offset_ {-24.0f, -12.0f};
 
-  float scale_adjustment_ {1.75f};
+  float scale_{};
 
+  float scale_adjustment_ {1.75f};
 
 };
 
