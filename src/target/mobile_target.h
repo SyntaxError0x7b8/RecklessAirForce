@@ -8,7 +8,7 @@
 
 class MobileTarget final : public Target {
   public:
-  MobileTarget(const char* sprite, const char* shadow, float scale);
+  MobileTarget(const char* sprite, const char* shadow, int images, float scale);
 
   ~MobileTarget() = default;
 
@@ -29,6 +29,9 @@ private:
 
   Vector2 direction_{};
 
+  int target_frame_{0};
+
+  int images_in_texture_{3};
 
 };
 

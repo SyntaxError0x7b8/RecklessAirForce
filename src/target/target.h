@@ -47,9 +47,15 @@ public:
 
   void SetScaleAdjustment(const float scaleAdj) { scale_adjustment_ = scaleAdj; }
 
-  Texture& GetTargetTexture() { return target_texture_; }
+  [[nodiscard]] Vector2 GetTargetTextureDimensions() const { return {
+    static_cast<float>(target_texture_.width),
+    static_cast<float>(target_texture_.height)}; }
 
-  Texture& GetShadowTexture() { return target_shadow_; }
+  [[nodiscard]] Vector2 GetShadowTextureDimensions() const { return {
+    static_cast<float>(target_shadow_.width),
+    static_cast<float>(target_shadow_.height)}; }
+
+  Texture& GetTargetTexture() { return target_texture_; }
 
   private:
 

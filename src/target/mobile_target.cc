@@ -9,9 +9,11 @@
 
 MobileTarget::MobileTarget(const char* sprite,
   const char* shadow,
+  const int images,
   const float scale)
     : Target(sprite, shadow, scale) {
   SetCoordinates();
+  images_in_texture_ = images;
   direction_ = Vector2Normalize(Vector2Add(GetPosition(), dest_pos_));
 }
 
@@ -53,11 +55,21 @@ void MobileTarget::SetCoordinates() {
 }
 void MobileTarget::Draw() {
   const Rectangle t_source_rect {
-    0.0f, 0.0f,
-    static_cast<float>(GetTargetTexture().width),
-    static_cast<float>(GetTargetTexture().height)};
+    static_cast<float>(target_frame_),
+    0.0f,
+    GetTargetTextureDimensions().x / static_cast<float>(images_in_texture_),
+    GetTargetTextureDimensions().y};
+  const Rectangle t_dest_rect{
+  GetPosition().x,
+    GetPosition().y,
+    (GetTargetTextureDimensions().x / static_cast<float>(images_in_texture_)) * scale_,
+    GetTargetTextureDimensions().y * scale_
+  };
 
   if (GetEnergy() >= 0.0) {
+    if (direction_.x  < 0.1f) { target_frame_ = 2;} // moving left
+    else if (direction_.x > 0.1f) { target_frame_ = 1;} // moving right
+    else { target_frame_ = 0; } // approx. straight
     //DrawTexturePro(GetTargetTexture(), t_source_rect,position_bounds_, {}, 0.0f, WHITE);
     //DrawRectangleLinesEx(position_bounds_, 2.0f, RED);
     // Draw shadow here
