@@ -8,7 +8,7 @@
 
 class MobileTarget final : public Target {
   public:
-  MobileTarget(const char* sprite, float scale);
+  MobileTarget(const char* sprite, const char* shadow, float scale);
 
   ~MobileTarget() = default;
 
@@ -17,6 +17,8 @@ class MobileTarget final : public Target {
   void TargetLinePath();
 
   void SetCoordinates();
+
+  void Draw();
 
 private:
   Vector2 next_pos_{};

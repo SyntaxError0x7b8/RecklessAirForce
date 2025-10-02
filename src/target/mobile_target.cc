@@ -8,8 +8,9 @@
 #include "raymath.h" // raymath.h always has to be after raylib.h
 
 MobileTarget::MobileTarget(const char* sprite,
+  const char* shadow,
   const float scale)
-    : Target(sprite, scale) {
+    : Target(sprite, shadow, scale) {
   SetCoordinates();
   direction_ = Vector2Normalize(Vector2Add(GetPosition(), dest_pos_));
 }
@@ -49,5 +50,26 @@ void MobileTarget::SetCoordinates() {
   // return vector2, cast int to float.
   dest_pos_ = {static_cast<float>(x_dest), static_cast<float>(y_bottom)};
 
+}
+void MobileTarget::Draw() {
+  const Rectangle t_source_rect {
+    0.0f, 0.0f,
+    static_cast<float>(GetTargetTexture().width),
+    static_cast<float>(GetTargetTexture().height)};
+
+  if (GetEnergy() >= 0.0) {
+    //DrawTexturePro(GetTargetTexture(), t_source_rect,position_bounds_, {}, 0.0f, WHITE);
+    //DrawRectangleLinesEx(position_bounds_, 2.0f, RED);
+    // Draw shadow here
+
+  }
+  else if (GetEnergy() < 0.0 && IsBurning()) {
+    //target_blast_->DrawBlast((position_.x + explosion_offset_.x),
+    //  (position_.y + explosion_offset_.y),
+    //  (scale_ * scale_adjustment_));
+  }
+  else {
+    return; // placeholder for burnt marks for ground targets
+  }
 }
 

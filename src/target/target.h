@@ -15,7 +15,7 @@ class Target {
 public:
   explicit Target(float scale);
 
-  Target(const char* sprite, float scale);
+  Target(const char* sprite, const char* shadow, float scale);
 
   ~Target();
 
@@ -43,11 +43,16 @@ public:
 
   void SetPosition(const Vector2 pos) { position_ = pos; }
 
-  void SetExplosionOffset(Vector2 offset) { explosion_offset_ = offset; }
+  void SetExplosionOffset(const Vector2 offset) { explosion_offset_ = offset; }
 
   void SetScaleAdjustment(const float scaleAdj) { scale_adjustment_ = scaleAdj; }
 
+  Texture& GetTargetTexture() { return target_texture_; }
+
+  Texture& GetShadowTexture() { return target_shadow_; }
+
   private:
+
   std::shared_ptr<Explosion> target_blast_ = nullptr;
 
   Rectangle position_bounds_{};
