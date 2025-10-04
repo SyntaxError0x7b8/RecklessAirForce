@@ -53,6 +53,7 @@ void MobileTarget::SetCoordinates() {
   dest_pos_ = {static_cast<float>(x_dest), static_cast<float>(y_bottom)};
 
 }
+
 void MobileTarget::Draw() {
   const Rectangle t_source_rect {
     static_cast<float>(target_frame_),

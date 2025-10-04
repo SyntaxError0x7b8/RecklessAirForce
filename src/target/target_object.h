@@ -22,6 +22,14 @@ class TargetObject {
 
   void Draw();
 
+  void SetPosition(const float x, const float y) { position_ = {x, y};}
+
+  void SetPosition(const Vector2 pos) { position_ = pos; }
+
+  void SetDestination(const Vector2 dest) {end_position_ = dest;}
+
+  void SetDestination(const float x, const float y) { end_position_ = { x, y }; }
+
 
 private:
   Texture enemy_texture_{};

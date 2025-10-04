@@ -11,7 +11,7 @@ TargetObject::TargetObject(const char* sprite, const char* shadow,
   images_in_sprite_ = num_images;
   map_scale_ = map_scale;
   p_control_ = new TargetControl();
-  p_control_->SetCoordinates(*this);
+  //p_control_->SetCoordinates(*this); // error passing an object not yet created
 
 }
 TargetObject::~TargetObject() {
