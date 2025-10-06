@@ -43,4 +43,6 @@ Vector2 TargetControl::TargetLinearPath() {
     GetPosition(),
     Vector2Scale(direction_, target_speed_)); // velocity
   SetPosition(next_point);*/
+  Vector2 _ = {};
+  return _;
 }

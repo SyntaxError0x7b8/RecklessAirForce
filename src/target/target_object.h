@@ -48,6 +48,8 @@ private:
 
   float map_scale_{};
 
+  bool set_endpoints_{false};
+
   // physics component to control movement
   TargetControl* p_control_{nullptr};
 

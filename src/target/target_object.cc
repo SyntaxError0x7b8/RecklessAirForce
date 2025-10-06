@@ -11,13 +11,20 @@ TargetObject::TargetObject(const char* sprite, const char* shadow,
   images_in_sprite_ = num_images;
   map_scale_ = map_scale;
   p_control_ = new TargetControl();
-  //p_control_->SetCoordinates(*this); // error passing an object not yet created
+  p_control_->SetCoordinates(*this);
+
 
 }
 TargetObject::~TargetObject() {
   UnloadTexture(enemy_texture_);
   UnloadTexture(enemy_shadow_texture_);
   delete p_control_;
+}
+void TargetObject::Update() {
+  // move (i.e. update() TargetControl
+
+
+  //if left screen or destroyed, set_positions false again
 }
 
 
