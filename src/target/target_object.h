@@ -18,17 +18,13 @@ class TargetObject {
 
   ~TargetObject();
 
-  void Update();
+  void Update(float dT);
 
   void Draw();
 
   void SetPosition(const float x, const float y) { position_ = {x, y};}
 
   void SetPosition(const Vector2 pos) { position_ = pos; }
-
-  void SetDestination(const Vector2 dest) {end_position_ = dest;}
-
-  void SetDestination(const float x, const float y) { end_position_ = { x, y }; }
 
 
 private:
@@ -42,7 +38,6 @@ private:
 
   Vector2 shadow_pos_{};
 
-  Vector2 end_position_{};
 
   int images_in_sprite_{3};
 

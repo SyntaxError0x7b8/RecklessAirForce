@@ -10,23 +10,27 @@
 class TargetObject;
 class TargetControl {
   public:
-  explicit TargetControl(int set_path = 0);
 
-  void Update(TargetObject& enemy);
+  void Update(TargetObject& enemy, float dT);
 
   void SetCoordinates(TargetObject& enemy);
 
-  Vector2 TargetLinearPath(Vector2 start, Vector2 end);
+  Vector2 BezierPath(TargetObject& enemy);
 
-  Vector2 TargetQuadraticPath(Vector2 start, Vector2 end);
+  static float XGenerator();
+
 
 private:
 
-  const float speed_{6.0f};
+  const float flight_time_{6.0f};
 
-  Vector2 direction_{0,1};
+  Vector2 end_position_{};
 
-  int path_{};
+  Vector2 control_point_{};
+
+  float t_{}; // Bezier's B(t), [0, 1]
+
+
 };
 
 #endif  // RECKLESSAIRFORCE_TARGET_CONTROL_H
