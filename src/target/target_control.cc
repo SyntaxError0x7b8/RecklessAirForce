@@ -1,13 +1,15 @@
 //
 // Created by qos on 10/3/25.
 //
-#include <random>
 
+#include <random>
 #include "target_control.h"
 #include "target_object.h"
+#include "raymath.h"
 
-
-
+TargetControl::TargetControl(const int set_path) {
+  path_ = set_path;
+}
 void TargetControl::Update(TargetObject& enemy) {
   // chose a random path.
   // for now only straight line implemented
@@ -35,14 +37,15 @@ void TargetControl::SetCoordinates(TargetObject& enemy) {
 
 }
 
-Vector2 TargetControl::TargetLinearPath() {
+Vector2 TargetControl::TargetLinearPath(const Vector2 start, const Vector2 end) {
   // calculate next point in the path line
   // y =m*x + b
   // this path could be changed to other mathematical curves
-  /*const Vector2 next_point = Vector2Add(
-    GetPosition(),
-    Vector2Scale(direction_, target_speed_)); // velocity
-  SetPosition(next_point);*/
-  Vector2 _ = {};
-  return _;
+  const Vector2 next_point = Vector2Add(
+    start,
+    Vector2Scale(direction_, speed_)); // velocity
+  return next_point;
+}
+Vector2 TargetControl::TargetQuadraticPath(Vector2 start, Vector2 end) {
+  return {0.0f, 0.0f}; // not implemented yet
 }

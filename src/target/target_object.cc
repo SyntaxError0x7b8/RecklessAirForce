@@ -10,7 +10,7 @@ TargetObject::TargetObject(const char* sprite, const char* shadow,
   enemy_shadow_texture_ = LoadTexture(shadow);
   images_in_sprite_ = num_images;
   map_scale_ = map_scale;
-  p_control_ = new TargetControl();
+  p_control_ = new TargetControl(0); // int selects path. Make it random
   p_control_->SetCoordinates(*this);
 
 
@@ -22,6 +22,7 @@ TargetObject::~TargetObject() {
 }
 void TargetObject::Update() {
   // move (i.e. update() TargetControl
+  p_control_->Update(*this);
 
 
   //if left screen or destroyed, set_positions false again
