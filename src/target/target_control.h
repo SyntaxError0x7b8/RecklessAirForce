@@ -15,7 +15,7 @@ class TargetControl {
 
   void SetCoordinates(TargetObject& enemy);
 
-  Vector2 BezierPath(TargetObject& enemy);
+  void BezierPath(TargetObject& enemy);
 
   static float XGenerator();
 
@@ -23,6 +23,8 @@ class TargetControl {
 private:
 
   const float flight_time_{6.0f};
+
+  Vector2 start_position_{};
 
   Vector2 end_position_{};
 
