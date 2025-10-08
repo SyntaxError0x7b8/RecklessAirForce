@@ -51,6 +51,7 @@ set(HEADER_FILES
         ${CMAKE_CURRENT_LIST_DIR}/src/graphics/graphics_component.h
         ${CMAKE_CURRENT_LIST_DIR}/src/graphics/proton_graphics.h
         ${CMAKE_CURRENT_LIST_DIR}/src/graphics/hero_graphics_component.h
+        ${CMAKE_CURRENT_LIST_DIR}/src/graphics/target_graphics.h
         ${CMAKE_CURRENT_LIST_DIR}/src/input/movement_handler.h
         ${CMAKE_CURRENT_LIST_DIR}/src/input/hero_shoot.h
         ${CMAKE_CURRENT_LIST_DIR}/src/target/target.h
@@ -71,6 +72,7 @@ set(SOURCE_FILES
         ${CMAKE_CURRENT_LIST_DIR}/src/graphics/graphics_component.cc
         ${CMAKE_CURRENT_LIST_DIR}/src/graphics/proton_graphics.cc
         ${CMAKE_CURRENT_LIST_DIR}/src/graphics/hero_graphics_component.cc
+        ${CMAKE_CURRENT_LIST_DIR}/src/graphics/target_graphics.cc
         ${CMAKE_CURRENT_LIST_DIR}/src/input/movement_handler.cc
         ${CMAKE_CURRENT_LIST_DIR}/src/input/hero_shoot.cc
         ${CMAKE_CURRENT_LIST_DIR}/src/target/target.cc

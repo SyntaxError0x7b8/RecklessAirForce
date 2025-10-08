@@ -64,7 +64,19 @@ void TargetControl::BezierPath(TargetObject& enemy) {
   // Vector2Add only allows to add 2 vectors at a time
   const Vector2 _ = Vector2Add(term_start, term_control);
   // last vector sum will be set as the target's position
-  enemy.SetPosition(Vector2Add(_, term_end));
+  const Vector2 next_position = Vector2Add(_, term_end);
+  Vector2 current_position = enemy.GetPosition();
+  if (current_position.x < (next_position.x - 0.01f)) {
+    enemy.SetFrame(1); // moving right
+  }
+  else if (current_position.x > (next_position.x + 0.01f)) {
+    enemy.SetFrame(2); // moving left
+  }
+  else {
+    enemy.SetFrame(0); // moving approximately straight south
+  }
+  // finally, set enemy's new position
+  enemy.SetPosition(next_position);
 }
 
 float TargetControl::XGenerator() {

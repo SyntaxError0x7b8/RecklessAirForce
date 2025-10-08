@@ -7,6 +7,7 @@
 #define RECKLESSAIRFORCE_TARGET_OBJECT_H
 #include "raylib.h"
 #include "target_control.h"
+#include "../graphics/target_graphics.h"
 
 
 class TargetObject {
@@ -26,13 +27,19 @@ class TargetObject {
 
   void SetPosition(const Vector2 pos) { position_ = pos; }
 
+  [[nodiscard]] Vector2 GetPosition() const { return position_; }
+
+  void SetFrame(const int frame) { frame_ = frame; }
+
+  [[nodiscard]] int GetFrame() const { return frame_; }
+
 
 private:
   Texture enemy_texture_{};
 
   Texture enemy_shadow_texture_{};
 
-  float frame_{};
+  int frame_{};
 
   Vector2 position_{};
 
@@ -49,6 +56,7 @@ private:
   TargetControl* p_control_{nullptr};
 
   // graphic component to control rendering
+  TargetGraphics* p_graphics_{nullptr};
 
   // array to proton similar to hero's. However, change movement direction.
 };

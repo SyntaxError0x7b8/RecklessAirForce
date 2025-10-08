@@ -1,0 +1,10 @@
+//
+// Created by qos on 10/8/25.
+//
+
+#ifndef RECKLESSAIRFORCE_TARGET_GRAPHICS_H
+#define RECKLESSAIRFORCE_TARGET_GRAPHICS_H
+
+class TargetGraphics {};
+
+#endif  // RECKLESSAIRFORCE_TARGET_GRAPHICS_H
