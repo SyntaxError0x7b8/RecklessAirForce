@@ -19,7 +19,7 @@ void TargetControl::Update(TargetObject& enemy, const float dT) {
     SetCoordinates(enemy);
   }
   else {
-   (t_ + dT) / flight_time_;
+   t_ = (t_ + dT) / flight_time_;
    if (t_ > 1.0f) { t_ = 1.0f; } // Bezier curve requires t_ = [0, 1]
    // update position using Bezier's path function
    BezierPath(enemy);
