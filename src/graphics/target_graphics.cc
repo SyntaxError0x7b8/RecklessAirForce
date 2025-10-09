@@ -14,6 +14,12 @@ TargetGraphics::TargetGraphics(const char* sprite,
   shadow_texture_ = LoadTexture(shadow);
   num_images_ = num_images;
   map_scale_ = map_scale;
+  shadow_offset_ = {
+    (static_cast<float>(shadow_texture_.width) /
+        static_cast<float>(num_images_)) * map_scale_,
+    static_cast<float>(shadow_texture_.height) * map_scale_
+  };
+
 }
 
  TargetGraphics::~TargetGraphics() {

@@ -24,6 +24,8 @@ private:
 
   Texture shadow_texture_{};
 
+  Vector2 shadow_offset_{12.0f, 12.0f}; //default offset
+
   int num_images_{};
 
   float map_scale_{};
