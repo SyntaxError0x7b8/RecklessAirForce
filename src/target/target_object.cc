@@ -26,8 +26,12 @@ void TargetObject::Update(const float dT) { // dT = time per frame
   // move (i.e. update() TargetControl
   p_control_->Update(*this, dT);
 
-
-  //if left screen or destroyed, set_positions false again
+  // destroyed?
 }
+void TargetObject::Draw() {
+  p_graphics_->Draw(*this);
+}
+
+
 
 
