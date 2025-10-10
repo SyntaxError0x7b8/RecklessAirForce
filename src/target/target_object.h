@@ -5,11 +5,15 @@
 
 #ifndef RECKLESSAIRFORCE_TARGET_OBJECT_H
 #define RECKLESSAIRFORCE_TARGET_OBJECT_H
+
+#include  <memory>
 #include "raylib.h"
 #include "target_control.h"
 #include "../graphics/target_graphics.h"
 
+#define DEFAULT_ENERGY 20.0f
 
+class Explosion;
 class TargetObject {
   public:
   TargetObject(const char* sprite,
@@ -52,6 +56,10 @@ private:
 
   bool set_endpoints_{false};
 
+  float energy_ {DEFAULT_ENERGY};
+
+  bool burning_ {};
+
   // physics component to control movement
   TargetControl* p_control_{nullptr};
 
@@ -59,6 +67,13 @@ private:
   TargetGraphics* p_graphics_{nullptr};
 
   // array to proton similar to hero's. However, change movement direction.
+protected:
+
+  std::shared_ptr<Explosion> target_blast_ = nullptr;
+
+  Vector2 explosion_offset_ {-24.0f, -12.0f};
+
+  float scale_adjustment_ {1.75f};
 };
 
 #endif  // RECKLESSAIRFORCE_TARGET_OBJECT_H
