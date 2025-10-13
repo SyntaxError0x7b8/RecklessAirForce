@@ -1,3 +1,11 @@
+<h1>PROJECT MOVED TO GITLAB!!!</h1>
+<p> I have been unable to renew my student account due to the (imo) useless AI check.<br>
+  They have removed any kind of human review, and the system is unable to read basic information from all the different documents I have uploaded.<br>
+Hence, this and future projects are now in GitLab</p>
+
+<a href='https://gitlab.com/JorMen0x7b8/RecklessAirForce'>RAF</a>
+
+
 <h2>Introduction</h2>h2</h2>
 Hobby project to continue my C++ learning journey and practice for uni's final project.
 
@@ -11,7 +19,7 @@ However, I discharge any responsibility if copyright information is ommited and
 I strongly encourage you to confirm it before using any of the files in this repository.
 
 <h3>Development and Target Environment</h3>
-Application tested on Ubuntu 22.04.3 LTS
+Application tested on Ubuntu 22.04.3 LTS and Windows 11.
 <br>
 Created with CLion ( https://www.jetbrains.com/clion/ )
 
